@@ -146,8 +146,8 @@ final class Init {
             __( 'Actions', 'botmate' ),
             __( 'Actions', 'botmate' ),
             self::CAPABILITY,
-            self::SLUG . '-actions',
-            array( AdminPage::class, 'actions' ),
+            'edit.php?post_type=botmate_actions',
+            false,
             1
         );
 
