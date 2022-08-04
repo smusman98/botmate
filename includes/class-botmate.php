@@ -29,8 +29,8 @@ final class Init {
     private $version = BOTMATE_VERSION;
 
     const SLUG = 'botmate';
-
     const CAPABILITY = 'manage_options';
+    const ACTION_POST_TYPE = 'botmate_actions';
 
     /**
      * Returns the instance of current class
@@ -87,7 +87,10 @@ final class Init {
      */
     private function includes() {
 
-        require 'class-bm-admin-page.php';
+        require 'class-scripts.php';
+        require 'class-bm-admin-menu.php';
+        require 'admin/actions-menu.php';
+
         require 'bm-functions.php';
 
     }
@@ -110,68 +113,7 @@ final class Init {
      */
     private function hooks() {
 
-        add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 
-    }
-
-    /**
-     * Registers menu
-     *
-     * @since 1.0
-     * @version 1.0
-     */
-    public function add_menu_page() {
-
-        add_menu_page(
-            __( 'BotMate', 'botmate' ),
-            __( 'BotMate', 'botmate' ),
-            self::CAPABILITY,
-            self::SLUG,
-            array( AdminPage::class, 'botmate' ),
-            'dashicons-rest-api'
-        );
-
-        add_submenu_page(
-            self::SLUG,
-            '',
-            __( 'Dashboard', 'botmate' ),
-            self::CAPABILITY,
-            self::SLUG,
-            '',
-            1
-        );
-
-        add_submenu_page(
-            self::SLUG,
-            __( 'Actions', 'botmate' ),
-            __( 'Actions', 'botmate' ),
-            self::CAPABILITY,
-            'edit.php?post_type=botmate_actions',
-            false,
-            1
-        );
-
-        add_submenu_page(
-            self::SLUG,
-            __( 'Triggers', 'botmate' ),
-            __( 'Triggers', 'botmate' ),
-            self::CAPABILITY,
-            self::SLUG . '-triggers',
-            array( AdminPage::class, 'triggers' ),
-            2
-        );
-
-        add_submenu_page(
-            self::SLUG,
-            __( 'Logs', 'botmate' ),
-            __( 'Logs', 'botmate' ),
-            self::CAPABILITY,
-            self::SLUG . '-logs',
-            array( AdminPage::class, 'logs' ),
-            3
-        );
-
-        do_action( 'botmate_add_menu', $this );
 
     }
 

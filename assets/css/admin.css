@@ -1,0 +1,25 @@
+/*Global Styling Starts*/
+.botmate input {
+    border: none;
+    border-bottom: 1px solid #a3a3a3;
+    background: #dbdbdb;
+    border-radius: 4px 4px 0px 0px;
+    padding: 4px 15px;
+}
+
+.botmate .button.button-primary {
+    padding: 4px 15px;
+    background: #ff3c00;
+    border: #ff3c00;
+}
+
+.botmate label {
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+/*Global Styling Ends*/
+.bm-site-configuration {
+    padding: 15px;
+}

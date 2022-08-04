@@ -19,6 +19,7 @@ use BotMate\Init;
 defined( 'ABSPATH' ) || exit;
 define( 'BOTMATE_VERSION', '1.0' );
 define( 'BOTMATE_PLUGIN_FILE', __FILE__ );
+define( 'BOTMATE_PLUGIN_URL', plugins_url( '/', BOTMATE_PLUGIN_FILE ) );
 
 require_once dirname( BOTMATE_PLUGIN_FILE ) . '/includes/class-botmate.php';
 
@@ -33,6 +34,11 @@ function BotMate_loader() {
 
     Init::get_instance();
 
+    /**
+     * Fires when BotMate is loaded
+     *
+     * @since 1.0
+     */
     do_action( 'botmate_init' );
 
 }
