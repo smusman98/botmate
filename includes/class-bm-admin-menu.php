@@ -93,7 +93,7 @@ class AdminPage {
             Init::CAPABILITY,
             Init::SLUG . '-logs',
             array( AdminPage::class, 'logs' ),
-            3
+            4
         );
 
         /**

@@ -2,10 +2,10 @@
 
 namespace BotMate;
 
-class ActionsMenu {
+class MenuAction {
 
     /**
-     * ActionsMenu constructor.
+     * MenuAction constructor.
      *
      * @since 1.0
      * @version 1.0
@@ -13,7 +13,7 @@ class ActionsMenu {
     public function __construct() {
 
         add_action( 'init', array( $this, 'register_actions_post' ) );
-        add_action( 'add_meta_boxes', array( $this, 'register_actions_metabox' ) );
+        //add_action( 'add_meta_boxes', array( $this, 'register_actions_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
     }
@@ -78,12 +78,12 @@ class ActionsMenu {
      */
     public function register_actions_metabox() {
 
-        add_meta_box(
-            'sites',
-            __( 'Site Configuration', 'botmate' ),
-            array( $this, 'site_configuration' ),
-            Init::ACTION_POST_TYPE
-        );
+//        add_meta_box(
+//            'sites',
+//            __( 'Site Configuration', 'botmate' ),
+//            array( $this, 'site_configuration' ),
+//            Init::ACTION_POST_TYPE
+//        );
 
     }
 
@@ -96,16 +96,11 @@ class ActionsMenu {
     public function site_configuration() {
 
         ?>
-        <div class="botmate bm-site-configuration">
-            <label>Site URL <input type="text" /></label>
-            <label>API Key <input type="text" /></label>
-            <button class="button button-primary" id="bm-connect-site">Connect</button>
-            <b class="status"></b>
-        </div>
+
         <?php
 
     }
 
 }
 
-new ActionsMenu();
+new MenuAction();

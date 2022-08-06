@@ -89,7 +89,8 @@ final class Init {
 
         require 'class-scripts.php';
         require 'class-bm-admin-menu.php';
-        require 'admin/actions-menu.php';
+        require 'admin/menu-actions.php';
+        require  'admin/menu-connections.php';
 
         require 'bm-functions.php';
 

@@ -8,18 +8,28 @@
 }
 
 .botmate .button.button-primary {
-    padding: 4px 15px;
     background: #ff3c00;
-    border: #ff3c00;
+    border-color: #ff3c00;
+}
+
+.botmate .button.button-secondary {
+    border-color: #ff1a00;
+    color: red;
+}
+
+.botmate .button {
+    padding: 4px 15px;
 }
 
 .botmate label {
     font-size: 14px;
-    margin: 0 10px;
     font-weight: 500;
 }
 
 /*Global Styling Ends*/
+
 .bm-site-configuration {
-    padding: 15px;
+    border: 1px solid red;
+    margin: 10px 0;
+    padding: 25px;
 }
