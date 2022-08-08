@@ -2,7 +2,7 @@
 
 namespace BotMate;
 
-class MenuAction {
+class MenuTrigger {
 
     /**
      * MenuAction constructor.
@@ -12,8 +12,8 @@ class MenuAction {
      */
     public function __construct() {
 
-        add_action( 'init', array( $this, 'register_action_post' ) );
-        //add_action( 'add_meta_boxes', array( $this, 'register_actions_metabox' ) );
+        add_action( 'init', array( $this, 'register_trigger_post' ) );
+        //add_action( 'add_meta_boxes', array( $this, 'register_trigger_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
     }
@@ -42,20 +42,20 @@ class MenuAction {
      * @since 1.0
      * @version 1.0
      */
-    public function register_action_post() {
+    public function register_trigger_post() {
 
         $labels = array(
-            'name'                  => __( 'Actions', 'botmate' ),
-            'singular_name'         => __( 'Action', 'botmate' ),
+            'name'                  => __( 'Triggers', 'botmate' ),
+            'singular_name'         => __( 'Trigger', 'botmate' ),
             'add_new'               => __( 'Add New', 'botmate' ),
-            'add_new_item'          => __( 'Add New Action', 'botmate' ),
-            'new_item'              => __( 'New Action', 'botmate' ),
-            'edit_item'             => __( 'Edit Actions', 'botmate' ),
-            'view_item'             => __( 'View Actions', 'botmate' ),
-            'all_items'             => __( 'All Actions', 'botmate' ),
-            'search_items'          => __( 'Search Actions', 'botmate' ),
-            'not_found'             => __( 'No action found.', 'recipe' ),
-            'not_found_in_trash'    => __( 'No action found in Trash.', 'recipe' ),
+            'add_new_item'          => __( 'Add New Trigger', 'botmate' ),
+            'new_item'              => __( 'New Trigger', 'botmate' ),
+            'edit_item'             => __( 'Edit Triggers', 'botmate' ),
+            'view_item'             => __( 'View Triggers', 'botmate' ),
+            'all_items'             => __( 'All Triggers', 'botmate' ),
+            'search_items'          => __( 'Search Triggers', 'botmate' ),
+            'not_found'             => __( 'No trigger found.', 'recipe' ),
+            'not_found_in_trash'    => __( 'No trigger found in Trash.', 'recipe' ),
         );
 
         $args = array(
@@ -65,7 +65,7 @@ class MenuAction {
             'supports'      => array( 'title' )
         );
 
-        register_post_type( Init::ACTION_POST_TYPE, $args );
+        register_post_type( Init::TRIGGER_POST_TYPE, $args );
 
     }
 
@@ -76,7 +76,7 @@ class MenuAction {
      * @since 1.0
      * @version 1.0
      */
-    public function register_actions_metabox() {
+    public function register_trigger_metabox() {
 
 //        add_meta_box(
 //            'sites',
@@ -103,4 +103,4 @@ class MenuAction {
 
 }
 
-new MenuAction();
+new MenuTrigger();

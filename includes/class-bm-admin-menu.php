@@ -71,7 +71,7 @@ class AdminPage {
             __( 'Actions', 'botmate' ),
             __( 'Actions', 'botmate' ),
             Init::CAPABILITY,
-            'edit.php?post_type=botmate_actions',
+            'edit.php?post_type=' . Init::ACTION_POST_TYPE,
             false,
             1
         );
@@ -81,8 +81,8 @@ class AdminPage {
             __( 'Triggers', 'botmate' ),
             __( 'Triggers', 'botmate' ),
             Init::CAPABILITY,
-            Init::SLUG . '-triggers',
-            array( AdminPage::class, 'triggers' ),
+            'edit.php?post_type=' . Init::TRIGGER_POST_TYPE,
+            false,
             2
         );
 
@@ -122,19 +122,6 @@ class AdminPage {
 
     }
 
-
-    /**
-     * call-back | Triggers
-     *
-     * @since 1.0
-     * @version 1.0
-     */
-    public function triggers() {
-        ?>
-        <h1>Triggers</h1>
-        <?php
-
-    }
 
     /**
      * call-back | Logs

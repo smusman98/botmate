@@ -30,7 +30,8 @@ final class Init {
 
     const SLUG = 'botmate';
     const CAPABILITY = 'manage_options';
-    const ACTION_POST_TYPE = 'botmate_actions';
+    const ACTION_POST_TYPE = 'botmate_action';
+    const TRIGGER_POST_TYPE = 'botmate_trigger';
 
     /**
      * Returns the instance of current class
@@ -90,6 +91,7 @@ final class Init {
         require 'class-scripts.php';
         require 'class-bm-admin-menu.php';
         require 'admin/menu-actions.php';
+        require 'admin/menu-triggers.php';
         require  'admin/menu-connections.php';
 
         require 'bm-functions.php';
