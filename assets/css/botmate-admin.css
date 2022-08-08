@@ -7,6 +7,14 @@
     padding: 4px 15px;
 }
 
+.botmate span.select2-selection {
+    border: none;
+    border-bottom: 1px solid #a3a3a3;
+    background: #dbdbdb;
+    border-radius: 4px 4px 0px 0px;
+    padding: 7px 6px;
+}
+
 .botmate .button.button-primary {
     background: #ff3c00;
     border-color: #ff3c00;
@@ -28,6 +36,32 @@
 
 .bm-mr-tb-15 {
     margin: 15px 0;
+}
+
+.bm-loader {
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-top: 4px solid #efff00;
+    border-bottom: 4px solid #efff00;
+    width: 15px;
+    height: 15px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 7px;
+    margin-top: -4px;
+    display: none;
+}
+  
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /*Global Styling Ends*/

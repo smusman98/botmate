@@ -15,6 +15,7 @@ class MenuTrigger {
         add_action( 'init', array( $this, 'register_trigger_post' ) );
         add_action( 'add_meta_boxes', array( $this, 'register_trigger_config_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        add_action( 'wp_ajax_bm-generate-api-key', array( $this, 'generate_api_key' ) );
 
     }
 
@@ -100,14 +101,23 @@ class MenuTrigger {
         ?>
         <div class="botmate">
             <div class="bm-trigger-config">
+                <?php
+                /**
+                 * Fires before Trigger Configuration form
+                 * 
+                 * @since 1.0
+                 */
+                do_action( 'botmate_before_trigger_config_form' );
+                ?>
                 <div class="bm-mr-tb-15">
-                    <label>API Key: <input type="text" /></label>
-                    <button class="button button-primary bm-generate-api-key">Generate Key</button>
+                    <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
+                    <label>API Key: <input type="text" class="bm-api-key" /></label>
+                    <button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button>
                 </div>
                 <div class="bm-mr-tb-15">
                     <label>
                         Allowed Triggers: 
-                        <select class="bm-triggers-select" multiple="multiple">
+                        <select class="bm-triggers-select" style="width: 40%;" multiple="multiple">
                             <option>One</option>
                             <option>One</option>
                             <option>One</option>
@@ -116,9 +126,55 @@ class MenuTrigger {
                         </select>
                     </label>
                 </div>
+                <?php
+                /**
+                 * Fires after Trigger Configuration form
+                 * 
+                 * @since 1.0
+                 */
+                do_action( 'botmate_after_trigger_config_form' );
+                ?>
             </div>
         </div>
         <?php
+    }
+
+
+    /**
+     * Generates API Key | AJAX 
+     * 
+     * @since 1.0
+     * @version 1.0
+     */
+    public function generate_api_key() {
+
+        if( !current_user_can( Init::CAPABILITY ) ) {
+            wp_send_json_error( 
+                array(
+                    'Message'   => 'User can not generate'
+                ),
+                403
+            );
+        }
+        
+        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        
+        $api_key = wp_generate_password( 20, true, false );
+
+        /**
+         * Fires before returning API Key
+         * 
+         * @param string $api_key API Key 
+         * 
+         * @since 1.0
+         */
+        $api_key = apply_filters( 'botmate_trigger_config_api_key', $api_key );
+
+        wp_send_json_success(
+            $api_key,
+            200
+        );
+
     }
 
 }
