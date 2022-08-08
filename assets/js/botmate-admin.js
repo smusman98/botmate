@@ -31,4 +31,11 @@ jQuery( document ).ready( function () {
         e.preventDefault();
 
     } );
+
+    //Triggers 
+    jQuery('.bm-triggers-select').select2({
+        placeholder: "Select Triggers"
+    });
+
+
 } );

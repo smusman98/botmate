@@ -13,7 +13,7 @@ class MenuTrigger {
     public function __construct() {
 
         add_action( 'init', array( $this, 'register_trigger_post' ) );
-        //add_action( 'add_meta_boxes', array( $this, 'register_trigger_metabox' ) );
+        add_action( 'add_meta_boxes', array( $this, 'register_trigger_config_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
     }
@@ -27,10 +27,12 @@ class MenuTrigger {
      */
     public function admin_enqueue_scripts() {
 
-        if( get_post_type() == Init::ACTION_POST_TYPE ) {
+        if( get_post_type() == Init::TRIGGER_POST_TYPE ) {
 
-            wp_enqueue_script( 'botmate-admin' );
+            wp_enqueue_style( 'botmate-select2' );
             wp_enqueue_style( 'botmate-admin' );
+            wp_enqueue_script( 'botmate-select2' );
+            wp_enqueue_script( 'botmate-admin' );
 
         }
 
@@ -76,29 +78,47 @@ class MenuTrigger {
      * @since 1.0
      * @version 1.0
      */
-    public function register_trigger_metabox() {
+    public function register_trigger_config_metabox() {
 
-//        add_meta_box(
-//            'sites',
-//            __( 'Site Configuration', 'botmate' ),
-//            array( $this, 'site_configuration' ),
-//            Init::ACTION_POST_TYPE
-//        );
+       add_meta_box(
+           'trigger_config',
+           __( 'Trigger Configuration', 'botmate' ),
+           array( $this, 'trigger_configuration' ),
+           Init::TRIGGER_POST_TYPE
+       );
 
     }
 
+
     /**
-     * Site Configuration
+     * Trigger Configuration
      *
      * @since 1.0
      * @version 1.0
      */
-    public function site_configuration() {
-
+    public function trigger_configuration() {
         ?>
-
+        <div class="botmate">
+            <div class="bm-trigger-config">
+                <div class="bm-mr-tb-15">
+                    <label>API Key: <input type="text" /></label>
+                    <button class="button button-primary bm-generate-api-key">Generate Key</button>
+                </div>
+                <div class="bm-mr-tb-15">
+                    <label>
+                        Allowed Triggers: 
+                        <select class="bm-triggers-select" multiple="multiple">
+                            <option>One</option>
+                            <option>One</option>
+                            <option>One</option>
+                            <option>One</option>
+                            <option>One</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
         <?php
-
     }
 
 }
