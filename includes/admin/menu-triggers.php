@@ -109,23 +109,29 @@ class MenuTrigger {
                  */
                 do_action( 'botmate_before_trigger_config_form' );
                 ?>
-                <div class="bm-mr-tb-15">
-                    <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
-                    <label>API Key: <input type="text" class="bm-api-key" /></label>
-                    <button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button>
-                </div>
-                <div class="bm-mr-tb-15">
-                    <label>
-                        Allowed Triggers: 
-                        <select class="bm-triggers-select" style="width: 40%;" multiple="multiple">
-                            <option>One</option>
-                            <option>One</option>
-                            <option>One</option>
-                            <option>One</option>
-                            <option>One</option>
-                        </select>
-                    </label>
-                </div>
+                <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
+                <table cellpadding="10">
+                    <tr>
+                        <td>API Key:</td>
+                        <td><input type="text" class="bm-api-key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td>Allowed Triggers: </td>
+                        <td>
+                            <select class="bm-triggers-select" style="width: 40%;" multiple="multiple">
+                                <option value="wp_insert_user">WordPress Insert User</option>
+                                <option>One</option>
+                                <option>One</option>
+                                <option>One</option>
+                                <option>One</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Site URL:</td>
+                        <td><?php echo esc_attr( get_site_url() ); ?></td>
+                    </tr>
+                </table>
                 <?php
                 /**
                  * Fires after Trigger Configuration form
