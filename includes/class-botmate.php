@@ -92,7 +92,9 @@ final class Init {
         require 'class-bm-admin-menu.php';
         require 'admin/menu-actions.php';
         require 'admin/menu-triggers.php';
-        require  'admin/menu-connections.php';
+        require 'admin/menu-connections.php';
+        require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-trigger.php';
+        require BOTMATE_DIR_PATH . 'integrations/class-bm-integrations.php';
 
         require 'bm-functions.php';
 

@@ -98,6 +98,9 @@ class MenuTrigger {
      * @version 1.0
      */
     public function trigger_configuration() {
+
+        $triggers = botmate_get_triggers_classes();
+
         ?>
         <div class="botmate">
             <div class="bm-trigger-config">
@@ -119,17 +122,22 @@ class MenuTrigger {
                         <td>Allowed Triggers: </td>
                         <td>
                             <select class="bm-triggers-select" style="width: 40%;" multiple="multiple">
-                                <option value="wp_insert_user">WordPress Insert User</option>
-                                <option>One</option>
-                                <option>One</option>
-                                <option>One</option>
-                                <option>One</option>
+                                <?php
+                                foreach ( $triggers as $trigger ) {
+
+                                    $class = new $trigger;
+                                    ?>
+                                    <option value="<?php echo esc_attr( $class->id ); ?>"><?php echo esc_html( $class->title ); ?></option>
+                                    <?php
+
+                                }
+                                ?>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Site URL:</td>
-                        <td><?php echo esc_attr( get_site_url() ); ?></td>
+                        <td><?php echo esc_attr( get_site_url() ) . '/'; ?></td>
                     </tr>
                 </table>
                 <?php

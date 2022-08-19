@@ -33,6 +33,25 @@ abstract class Trigger {
 
 
     /**
+     * Logo url of the Integration
+     * 
+     * @var string
+     * @since 1.0
+     * @version 1.0
+     */
+    public $logo = false;
+
+    /**
+     * Description of the Integration
+     *
+     * @var string
+     * @since 1.0
+     * @version 1.0
+     */
+    public $description = false;
+
+
+    /**
      * Trigger constructor.
      *
      *
@@ -44,6 +63,7 @@ abstract class Trigger {
 
         $this->id = $args['id'];
         $this->title = $args['title'];
+        $this->logo = $args['logo'];
 
     }
 
@@ -58,7 +78,5 @@ abstract class Trigger {
 
 
     }
-
-
 
 }
