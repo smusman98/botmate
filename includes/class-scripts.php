@@ -29,7 +29,10 @@ class Scripts {
 
         //BotMate JS
         wp_register_script( 'botmate-admin', BOTMATE_PLUGIN_URL . 'assets/js/botmate-admin.js', array( 'jquery' ), BOTMATE_VERSION, true );
-        
+
+        //Connection JS
+        wp_register_script( 'botmate-connections', BOTMATE_PLUGIN_URL . 'assets/js/botmate-connections.js', array( 'jquery' ), BOTMATE_VERSION, true );
+
         //Select2 CSS
         wp_register_style( 'botmate-select2', BOTMATE_PLUGIN_URL . 'assets/css/botmate-select2.min.css', false, BOTMATE_VERSION );
         
@@ -42,6 +45,22 @@ class Scripts {
          * @since 1.0
          */
         do_action( 'botmate_admin_register_scripts' );
+
+    }
+
+    /**
+     * Enqueue all Scripts
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function admin_enqueue_all() {
+
+        wp_enqueue_script( 'botmate-select2' );
+        wp_enqueue_script( 'botmate-admin' );
+        wp_enqueue_script( 'botmate-connection' );
+        wp_enqueue_style( 'botmate-select2' );
+        wp_enqueue_style( 'botmate-admin' );
 
     }
 

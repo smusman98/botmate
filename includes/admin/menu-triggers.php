@@ -112,7 +112,7 @@ class MenuTrigger {
                  */
                 do_action( 'botmate_before_trigger_config_form' );
                 ?>
-                <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
+                <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-security' ) ) ?>">
                 <table cellpadding="10">
                     <tr>
                         <td>API Key:</td>
