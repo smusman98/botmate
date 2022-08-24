@@ -25,7 +25,7 @@ define( 'BOTMATE_DIR_PATH', dirname( __FILE__ ) . '/' );
 require_once dirname( BOTMATE_PLUGIN_FILE ) . '/includes/class-botmate.php';
 
 /**
- * Returns the main instance of OC
+ * Returns the main instance of BotMate
  *
  * @since 1.0
  * @version 1.0
