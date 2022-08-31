@@ -16,6 +16,7 @@ class MenuTrigger {
         add_action( 'add_meta_boxes', array( $this, 'register_trigger_config_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
         add_action( 'wp_ajax_bm-generate-api-key', array( $this, 'generate_api_key' ) );
+        add_action( 'save_post_' . Init::TRIGGER_POST_TYPE, array( $this, 'save_trigger' ) );
 
     }
 
@@ -100,6 +101,7 @@ class MenuTrigger {
     public function trigger_configuration() {
 
         $triggers = botmate_get_triggers_classes();
+        $post_id = get_the_ID();
 
         ?>
         <div class="botmate">
@@ -112,22 +114,25 @@ class MenuTrigger {
                  */
                 do_action( 'botmate_before_trigger_config_form' );
                 ?>
-                <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-security' ) ) ?>">
+                <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
                 <table cellpadding="10">
                     <tr>
                         <td>API Key:</td>
-                        <td><input type="text" class="bm-api-key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
+                        <td><input type="text" class="bm-api-key" value="<?php echo esc_attr( get_post_meta( $post_id, 'api_key', true ) ); ?>" name="bm_api_key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
                     </tr>
                     <tr>
                         <td>Allowed Triggers: </td>
                         <td>
-                            <select class="bm-triggers-select" style="width: 40%;" multiple="multiple">
+                            <select class="bm-triggers-select" style="width: 40%;" multiple="multiple" name="bm_triggers[]">
                                 <?php
+                                $saved_triggers = get_post_meta( $post_id, 'triggers', true );
+
                                 foreach ( $triggers as $trigger ) {
 
                                     $class = new $trigger;
+                                    $selected = ( is_array( $saved_triggers ) && in_array( $class->id, $saved_triggers ) ) ? 'selected' : '';
                                     ?>
-                                    <option value="<?php echo esc_attr( $class->id ); ?>"><?php echo esc_html( $class->title ); ?></option>
+                                    <option value="<?php echo esc_attr( $class->id ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $class->title ); ?></option>
                                     <?php
 
                                 }
@@ -188,6 +193,22 @@ class MenuTrigger {
             $api_key,
             200
         );
+
+    }
+    
+    /**
+     * Saves the Triggers | Action Callback
+     * 
+     * @since 1.0
+     * @version 1.0
+     */
+    public function save_trigger( $post_id ) {
+
+        $api_key = sanitize_text_field( $_POST['bm_api_key'] );
+        $triggers = !empty( $_POST['bm_triggers'] ) ? botmate_sanitize_array( $_POST['bm_triggers'] ) : array();
+
+        update_post_meta( $post_id, 'api_key', $api_key );
+        update_post_meta( $post_id, 'triggers', $triggers );
 
     }
 
