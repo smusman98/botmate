@@ -94,6 +94,7 @@ final class Init {
         require 'admin/menu-triggers.php';
         require 'admin/menu-connections.php';
         require 'classes/class-bm-database.php';
+        require 'rest-api/v1/class-rest-routes.php';
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-trigger.php';
         require BOTMATE_DIR_PATH . 'integrations/class-bm-integrations.php';
 

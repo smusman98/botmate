@@ -204,7 +204,7 @@ class MenuTrigger {
      */
     public function save_trigger( $post_id ) {
 
-        $api_key = sanitize_text_field( $_POST['bm_api_key'] );
+        $api_key = !empty( $_POST['bm_api_key'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_api_key'] ) ) : '';
         $triggers = !empty( $_POST['bm_triggers'] ) ? botmate_sanitize_array( $_POST['bm_triggers'] ) : array();
 
         update_post_meta( $post_id, 'api_key', $api_key );
