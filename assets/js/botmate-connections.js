@@ -73,9 +73,36 @@ jQuery( document ).ready( function() {
 
     } );
 
-    jQuery( document ).on( 'click', '.bm-connect-site', function ( e ) {
+    jQuery( document ).on( 'click', '.bm-test-site-connection', function ( e ) {
 
+        e.preventDefault();
+        
+        var parent = jQuery( this ).parent( '.bm-site-configuration' );
+        var siteURL = jQuery( parent ).find( '.bm-url' ).val();
+        var apiKey = jQuery( parent ).find( '.bm-api-key' ).val();
+        var security = jQuery( '.bm-security' ).val();
 
+        jQuery.ajax( {
+            type: 'POST',
+            url: ajaxurl,
+            data: {
+                action: 'bm-test-connection',
+                _nonce: security,
+                site_url: siteURL,
+                api_key: apiKey
+            },
+            beforeSend: function() {
+                jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'inline-block' } );
+                jQuery( parent ).find( '.bm-site-status' ).html( '<p>Status: Connection...</p>' );
+            },
+            success: function( response ) {
+
+            },
+            complete: function() {
+                jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'none' } );
+                jQuery( parent ).find( '.bm-site-status' ).html( '<p>Status: Connected.</p>' );
+            },
+        } );
 
     } );
 
