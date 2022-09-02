@@ -7,6 +7,8 @@ class Database {
     const LOGS_TABLE = 'botmate_logs';
     const SITE_OPTION = 'botmate_sites';
 
+    private $site_option = '';
+
     /**
      * Database constructor.
      *
@@ -15,6 +17,14 @@ class Database {
      */
     public function __construct() {
 
+        /**
+         * Filters the option name
+         *
+         * @param string SITE_OPTION Site Option
+         *
+         * @since 1.0
+         */
+        $this->site_option = apply_filters( 'botmate_sites_option', self::SITE_OPTION );
 
     }
 
@@ -32,21 +42,13 @@ class Database {
     /**
      * Save sites
      *
-     * @param $sites
+     * @param array $sites Sites
      * @since 1.0
      * @version 1.0
      */
     public function save_sites( $sites ) {
 
-        /**
-         * Filters the option name
-         *
-         * @param string SITE_OPTION Site Option
-         *
-         * @since 1.0
-         */
-        $option_name = apply_filters( 'botmate_sites_option', self::SITE_OPTION );
-        update_option( $option_name, $sites );
+        update_option( $this->site_option, $sites );
 
     }
 
@@ -58,16 +60,33 @@ class Database {
      */
     public function get_sites() {
 
-        /**
-         * Filters the option name
-         *
-         * @param string SITE_OPTION Site Option
-         *
-         * @since 1.0
-         */
-        $option_name = apply_filters( 'botmate_sites_option', self::SITE_OPTION );
+        return get_option( $this->site_option );
 
-        return get_option( $option_name );
+    }
+
+    /**
+     * Checks does API key exist
+     * 
+     * @param string $api_key API key
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function api_key_exists( $api_key ) {
+
+        global $wpdb;
+
+        $result = $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$wpdb->postmeta} WHERE meta_value = %s",
+                $api_key
+            )
+        );
+        
+        if( !empty( $result ) ) {
+            return true;
+        }
+
+        return false;
 
     }
 

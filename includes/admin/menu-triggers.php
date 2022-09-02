@@ -170,7 +170,9 @@ class MenuTrigger {
         if( !current_user_can( Init::CAPABILITY ) ) {
             wp_send_json_error( 
                 array(
-                    'Message'   => 'User can not generate'
+                    'code'      =>  'not_authorized',
+                    'message'   =>  'User can not generate.',
+                    'status'    =>  403
                 ),
                 403
             );

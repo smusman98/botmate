@@ -64,7 +64,6 @@ endif;
  * @since 1.0
  * @version 1.0
  */
-
 if( !function_exists( 'botmate_sanitize_array' ) ):
 function botmate_sanitize_array( $_array ) {
 
@@ -82,6 +81,21 @@ function botmate_sanitize_array( $_array ) {
     }
 
     return $_array;
+
+}
+endif;
+
+/**
+ * Checks does API key exist
+ * 
+ * @param string $api_key API key
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_api_key_exists' ) ):
+function botmate_api_key_exists( $api_key ) {
+
+    return  \BotMate\Classes\Database::api_key_exists( $api_key );
 
 }
 endif;
