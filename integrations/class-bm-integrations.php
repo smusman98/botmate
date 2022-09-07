@@ -53,6 +53,7 @@ class Integrations {
     public function hooks() {
 
         add_filter( 'botmate_register_trigger', array( $this, 'botmate_register_triggers' ) );
+        add_filter( 'botmate_register_action', array( $this, 'botmate_register_actions' ) );
 
     }
 
@@ -67,12 +68,32 @@ class Integrations {
     public function botmate_register_triggers( $triggers ) {
 
         $new_triggers = array(
-            'BotMate\Integrations\WordPress\WP_Insert_User'
+            'BotMate\Integrations\WordPress\Triggers\WP_Insert_User'
         );
 
         $triggers = array_merge( $new_triggers, $triggers );
 
         return $triggers;
+
+    }
+
+    /**
+     * Register builtin actions | Filter call-back
+     *
+     * @param $actions
+     * @return string[]
+     * @since 1.0
+     * @version 1.0
+     */
+    public function botmate_register_actions( $actions ) {
+
+        $new_actions = array(
+            'BotMate\Integrations\WordPress\Triggers\WP_Insert_User'
+        );
+
+        $actions = array_merge( $new_actions, $actions );
+
+        return $actions;
 
     }
 

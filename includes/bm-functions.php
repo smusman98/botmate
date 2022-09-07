@@ -25,6 +25,30 @@ if( !function_exists( 'botmate_get_triggers_classes' ) ):
 endif;
 
 /**
+ * Get list of registered actions
+ *
+ * @return mixed|void
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_actions_classes' ) ):
+    function botmate_get_actions_classes() {
+
+        /**
+         * Filters the actions | Register actions
+         *
+         * @param array array() Actions(s)
+         *
+         * @since 1.0
+         */
+        $classes = apply_filters( 'botmate_register_action', array() );
+
+        return $classes;
+
+    }
+endif;
+
+/**
  * Adds Site
  * 
  * @param array $site Site

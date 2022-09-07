@@ -61,9 +61,15 @@ abstract class Trigger {
      */
     public function __construct( $args = array() ) {
 
-        $this->id = $args['id'];
-        $this->title = $args['title'];
-        $this->logo = $args['logo'];
+        if( !empty( $args ) ) {
+
+            foreach ( $args as $key => $value ) {
+
+                $this->$key =  $value;
+
+            }
+
+        }
 
     }
 

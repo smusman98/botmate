@@ -19,6 +19,7 @@ class WordPress {
     public function __construct() {
 
         require_once 'triggers/wp-insert-user.php';
+        require_once 'actions/wp-insert-user.php';
 
     }
 
