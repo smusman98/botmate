@@ -13,7 +13,7 @@ class MenuAction {
     public function __construct() {
 
         add_action( 'init', array( $this, 'register_action_post' ) );
-        //add_action( 'add_meta_boxes', array( $this, 'register_actions_metabox' ) );
+        add_action( 'add_meta_boxes', array( $this, 'register_actions_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
     }
@@ -78,26 +78,24 @@ class MenuAction {
      */
     public function register_actions_metabox() {
 
-//        add_meta_box(
-//            'sites',
-//            __( 'Site Configuration', 'botmate' ),
-//            array( $this, 'site_configuration' ),
-//            Init::ACTION_POST_TYPE
-//        );
+        add_meta_box(
+            'action_config',
+            __( 'Action Configuration', 'botmate' ),
+            array( $this, 'action_configuration' ),
+            Init::ACTION_POST_TYPE
+        );
 
     }
 
     /**
-     * Site Configuration
+     * Renders Action configuration HTML
      *
      * @since 1.0
      * @version 1.0
      */
-    public function site_configuration() {
+    public function action_configuration() {
 
-        ?>
-
-        <?php
+        require 'views/html-actions.php';
 
     }
 

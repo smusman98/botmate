@@ -12,6 +12,7 @@ jQuery( document ).ready( function() {
 
         jQuery( cloned ).attr( 'data-id', lastDataID + 1 );
         jQuery( cloned ).find( 'input' ).val('');
+        jQuery( cloned ).find( '.bm-site-status' ).empty();
         jQuery( '.bm-site-configuration' ).last().after( cloned );
 
     } );
@@ -82,6 +83,24 @@ jQuery( document ).ready( function() {
         var apiKey = jQuery( parent ).find( '.bm-api-key' ).val();
         var security = jQuery( '.bm-security' ).val();
 
+        if( siteURL == '' ) {
+            jQuery( parent ).find( '.bm-site-status' ).html(
+                `<p>
+                    <b>Message: </b> Site URL Required.
+                </p>`
+            );
+            return;
+        }
+
+        if( apiKey == '' ) {
+            jQuery( parent ).find( '.bm-site-status' ).html(
+                `<p>
+                    <b>Message: </b> API Key Required.
+                </p>`
+            );
+            return;
+        }
+
         jQuery.ajax( {
             type: 'POST',
             url: ajaxurl,
@@ -93,14 +112,20 @@ jQuery( document ).ready( function() {
             },
             beforeSend: function() {
                 jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'inline-block' } );
-                jQuery( parent ).find( '.bm-site-status' ).html( '<p>Status: Connection...</p>' );
+                jQuery( parent ).find( '.bm-site-status' ).html( '<p><b>Status:</b> Connection...</p>' );
             },
             success: function( response ) {
 
             },
-            complete: function() {
+            complete: function( response ) {
                 jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'none' } );
-                jQuery( parent ).find( '.bm-site-status' ).html( '<p>Status: Connected.</p>' );
+                jQuery( parent ).find( '.bm-site-status' ).html(
+                    `<p>
+                        <b>Message: </b> ${response.responseJSON.data.message} <br />
+                        <b>Code: </b> ${response.responseJSON.data.code} <br />
+                        <b>Status: </b> ${response.responseJSON.data.status} <br />
+                    </p>`
+                );
             },
         } );
 

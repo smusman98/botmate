@@ -2,6 +2,8 @@
 
 namespace BotMate;
 
+use BotMate\Server\v1\Server;
+
 class MenuConnection {
 
     private static $_instance;
@@ -123,7 +125,16 @@ class MenuConnection {
         $site_url = isset( $_POST['site_url'] ) ? sanitize_url( $_POST['site_url'] ) : '';
         $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
 
-        var_dump( $site_url, $api_key );die;
+        $server = new Server( $site_url, $api_key );
+        $response = $server->request( 'GET', '/test-connection' );
+        $code = wp_remote_retrieve_response_code( $response );
+        $response = wp_remote_retrieve_body( $response );
+
+
+        wp_send_json(
+            json_decode( $response ),
+            $code
+        );
 
     }
 

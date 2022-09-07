@@ -41,15 +41,15 @@ class Server {
      * Server constructor.
      *
      * @param string $base_url Base URL
-     * @param string $endpoint EndPoint
+     * @param string $api_key API Key
      * @since 1.0
      * @version 1.0
      */
-    public function __constructor( $base_url, $api_key ) {
+    public function __construct( $base_url, $api_key ) {
 
-        $this->base_url = $base_url;
+        $this->base_url = $base_url . '/wp-json/' . $this->namespace;
         $this->api_key = $api_key;
-        
+
     }
 
     /**
@@ -109,18 +109,20 @@ class Server {
     /**
      * Request
      *
-     * @param string $method Request Method 
+     * @param string $method Request Method
      * @param string $endpoint End Point
-     * @since 1.0
+     * @return
      * @version 1.0
+     * @since 1.0
      */
     public function request( $method, $endpoint ) {
 
         $url = $this->base_url . $endpoint;
+
         $args = array(
             'method'    =>  $method,
-            $header     =>  $this->header(),
-            $body       =>  $this->body
+            'headers'   =>  $this->header(),
+            'body'      =>  $this->body()
         );
 
         /**
@@ -132,13 +134,13 @@ class Server {
          */
         $args = apply_filters( 'botmate_server_request_args', $args );
 
-        wp_remote_post(
+        $response = wp_remote_post(
             $url,
             $args
         );
 
+        return $response;
+
     }
 
 }
-
-new Server;
