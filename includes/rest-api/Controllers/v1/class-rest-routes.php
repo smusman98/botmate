@@ -1,17 +1,24 @@
 <?php
 
-namespace BotMate;
+namespace BotMate\Controllers\v1;
 
 /**
  * RestRoutes Class
  *
  *
- * @package BotMate
+ * @package BotMate\Controllers\v1
  * @since 1.0
  * @version 1.0
  */
 class RestRoutes {
 
+     /**
+     * Namespace of routes
+     * 
+     * @var string
+     * @since 1.0
+     * @version 1.0
+     */
     private $namespace = 'botmate/v1';
 
      /**

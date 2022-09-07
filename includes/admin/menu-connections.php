@@ -2,6 +2,8 @@
 
 namespace BotMate;
 
+use BotMate\Server\v1\Server;
+
 class MenuConnection {
 
     private static $_instance;
@@ -26,6 +28,7 @@ class MenuConnection {
 
         add_action( 'botmate_add_menu', array( $this, 'add_submenu' ) );
         add_action( 'wp_ajax_bm-save-sites', array( $this, 'save_sites' ) );
+        add_action( 'wp_ajax_bm-test-connection', array( $this, 'test_connection' ) );
 
         if ( isset( $_GET['page'] ) && $_GET['page'] == 'botmate-connections' ) {
 
@@ -106,6 +109,32 @@ class MenuConnection {
         $sites = apply_filters( 'botmate_save_sites', $sites );
 
         botmate_save_sites( $sites );
+
+    }
+
+    /**
+     * Tests Site Connection | AJAX
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public function test_connection() {
+
+        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+
+        $site_url = isset( $_POST['site_url'] ) ? sanitize_url( $_POST['site_url'] ) : '';
+        $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
+
+        $server = new Server( $site_url, $api_key );
+        $response = $server->request( 'GET', '/test-connection' );
+        $code = wp_remote_retrieve_response_code( $response );
+        $response = wp_remote_retrieve_body( $response );
+
+
+        wp_send_json(
+            json_decode( $response ),
+            $code
+        );
 
     }
 

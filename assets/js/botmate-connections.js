@@ -12,6 +12,7 @@ jQuery( document ).ready( function() {
 
         jQuery( cloned ).attr( 'data-id', lastDataID + 1 );
         jQuery( cloned ).find( 'input' ).val('');
+        jQuery( cloned ).find( '.bm-site-status' ).empty();
         jQuery( '.bm-site-configuration' ).last().after( cloned );
 
     } );
@@ -73,9 +74,60 @@ jQuery( document ).ready( function() {
 
     } );
 
-    jQuery( document ).on( 'click', '.bm-connect-site', function ( e ) {
+    jQuery( document ).on( 'click', '.bm-test-site-connection', function ( e ) {
 
+        e.preventDefault();
+        
+        var parent = jQuery( this ).parent( '.bm-site-configuration' );
+        var siteURL = jQuery( parent ).find( '.bm-url' ).val();
+        var apiKey = jQuery( parent ).find( '.bm-api-key' ).val();
+        var security = jQuery( '.bm-security' ).val();
 
+        if( siteURL == '' ) {
+            jQuery( parent ).find( '.bm-site-status' ).html(
+                `<p>
+                    <b>Message: </b> Site URL Required.
+                </p>`
+            );
+            return;
+        }
+
+        if( apiKey == '' ) {
+            jQuery( parent ).find( '.bm-site-status' ).html(
+                `<p>
+                    <b>Message: </b> API Key Required.
+                </p>`
+            );
+            return;
+        }
+
+        jQuery.ajax( {
+            type: 'POST',
+            url: ajaxurl,
+            data: {
+                action: 'bm-test-connection',
+                _nonce: security,
+                site_url: siteURL,
+                api_key: apiKey
+            },
+            beforeSend: function() {
+                jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'inline-block' } );
+                jQuery( parent ).find( '.bm-site-status' ).html( '<p><b>Status:</b> Connection...</p>' );
+            },
+            success: function( response ) {
+
+            },
+            complete: function( response ) {
+                jQuery( parent ).find( '.bm-loader' ).css( { 'display': 'none' } );
+                jQuery( parent ).find( '.bm-site-status' ).html(
+                    `<p>
+                        <b>Message: </b> ${response.responseJSON.data.message} <br />
+                        <b>Code: </b> ${response.responseJSON.data.code} <br />
+                        <b>Status: </b> ${response.responseJSON.data.status} <br />
+                    </p>`
+                );
+            },
+        } );
 
     } );
 

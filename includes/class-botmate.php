@@ -51,7 +51,7 @@ final class Init {
     }
 
     /**
-     * Officing_Plus constructor.
+     * Init constructor.
      *
      * @since 1.0
      * @version 1.0
@@ -94,7 +94,8 @@ final class Init {
         require 'admin/menu-triggers.php';
         require 'admin/menu-connections.php';
         require 'classes/class-bm-database.php';
-        require 'rest-api/v1/class-rest-routes.php';
+        require 'rest-api/Controllers/v1/class-rest-routes.php';
+        require 'rest-api/Server/v1/class-server.php';
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-trigger.php';
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-action.php';
         require BOTMATE_DIR_PATH . 'integrations/class-bm-integrations.php';
