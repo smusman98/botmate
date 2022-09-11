@@ -91,6 +91,21 @@ class Database {
     }
 
     /**
+     * Gets Postmeta by Key
+     *
+     * @param $trigger_id
+     * @param $key
+     * @return mixed
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function get_meta( $trigger_id, $key ) {
+
+        return get_post_meta( $trigger_id, $key, true );
+
+    }
+
+    /**
      * Runs on Plugin activation :)
      *
      * @since 1.0

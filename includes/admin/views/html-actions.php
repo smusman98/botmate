@@ -1,36 +1,34 @@
 <?php
 
-$triggers = botmate_get_triggers_classes();
+$actions = botmate_get_actions_classes();
 $post_id = get_the_ID();
+$sites = botmate_get_sites();
 
 ?>
     <div class="botmate">
-        <div class="bm-trigger-config">
+        <div class="bm-action-config">
             <?php
             /**
-             * Fires before Trigger Configuration form
+             * Fires before Action Configuration form
              *
              * @since 1.0
              */
-            do_action( 'botmate_before_trigger_config_form' );
+            do_action( 'botmate_before_action_config_form' );
             ?>
             <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
             <table cellpadding="10">
-                <tr>
-                    <td>API Key:</td>
-                    <td><input type="text" class="bm-api-key" value="<?php echo esc_attr( get_post_meta( $post_id, 'api_key', true ) ); ?>" name="bm_api_key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
-                </tr>
-                <tr>
-                    <td>Allowed Triggers: </td>
+                <tr class="bm-action-row">
                     <td>
-                        <select class="bm-triggers-select" style="width: 40%;" multiple="multiple" name="bm_triggers[]">
+                        <label for="">Select Action</label>
+                        <select class="bm-actions-select" style="width: 100%;" name="bm_action">
+                            <option value="">Select Action</option>
                             <?php
-                            $saved_triggers = get_post_meta( $post_id, 'triggers', true );
+                            $saved_actions = get_post_meta( $post_id, 'triggers', true );
 
-                            foreach ( $triggers as $trigger ) {
+                            foreach ( $actions as $action ) {
 
-                                $class = new $trigger;
-                                $selected = ( is_array( $saved_triggers ) && in_array( $class->id, $saved_triggers ) ) ? 'selected' : '';
+                                $class = new $action;
+                                $selected = ( is_array( $saved_actions ) && in_array( $class->id, $saved_actions ) ) ? 'selected' : '';
                                 ?>
                                 <option value="<?php echo esc_attr( $class->id ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $class->title ); ?></option>
                                 <?php
@@ -38,20 +36,49 @@ $post_id = get_the_ID();
                             }
                             ?>
                         </select>
+                        <div><sup>When Action happen on current site.</sup></div>
                     </td>
-                </tr>
-                <tr>
-                    <td>Site URL:</td>
-                    <td><?php echo esc_attr( get_site_url() ) . '/'; ?></td>
+                    <td>
+                        <label for="">Select Site</label>
+                        <select class="bm-actions-site-select" style="width: 100%;" name="bm_actions_site">
+                            <option value="">Select Site</option>
+                            <?php
+                            if( $sites ) {
+                                foreach ( $sites as $site ) {
+                                    ?>
+                                    <option value="<?php echo esc_attr( $site['api_key'] ) ?>" data-site="<?php echo esc_url( $site['url'] ) ?>"><?php echo esc_html( $site['title'] ) ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <div><sup>Where Trigger should happen.</sup></div>
+                    </td>
+                    <td>
+                        <label for="">Select Trigger</label>
+                        <select class="bm-actions-trigger-select" style="width: 100%;" name="bm_actions_trigger">
+                            <option value="">Select Trigger</option>
+                            <?php
+                            if( $sites ) {
+                                foreach ( $sites as $site ) {
+                                    ?>
+                                    <option value="<?php echo esc_attr( $site['api_key'] ) ?>" data-site="<?php echo esc_url( $site['url'] ) ?>"><?php echo esc_html( $site['title'] ) ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <div><sup>What should happen to the selected site.</sup></div>
+                    </td>
                 </tr>
             </table>
             <?php
             /**
-             * Fires after Trigger Configuration form
+             * Fires after Action Configuration form
              *
              * @since 1.0
              */
-            do_action( 'botmate_after_trigger_config_form' );
+            do_action( 'botmate_after_action_config_form' );
             ?>
         </div>
     </div>

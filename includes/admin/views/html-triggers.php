@@ -1,7 +1,7 @@
 <?php
 
 $triggers = botmate_get_triggers_classes();
-$post_id = get_the_ID();
+$trigger_id = get_the_ID();
 
 ?>
     <div class="botmate">
@@ -18,14 +18,14 @@ $post_id = get_the_ID();
             <table cellpadding="10">
                 <tr>
                     <td>API Key:</td>
-                    <td><input type="text" class="bm-api-key" value="<?php echo esc_attr( get_post_meta( $post_id, 'api_key', true ) ); ?>" name="bm_api_key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
+                    <td><input type="text" class="bm-api-key" value="<?php echo esc_attr( botmate_get_api_key( $trigger_id ) ); ?>" name="bm_api_key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
                 </tr>
                 <tr>
                     <td>Allowed Triggers: </td>
                     <td>
                         <select class="bm-triggers-select" style="width: 40%;" multiple="multiple" name="bm_triggers[]">
                             <?php
-                            $saved_triggers = get_post_meta( $post_id, 'triggers', true );
+                            $saved_triggers = botmate_get_saved_triggers( $trigger_id );
 
                             foreach ( $triggers as $trigger ) {
 

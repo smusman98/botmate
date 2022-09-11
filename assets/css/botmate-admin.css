@@ -1,23 +1,17 @@
 /*Global Styling Starts*/
 .botmate input {
-    border: none;
-    border-bottom: 1px solid #a3a3a3;
-    background: #dbdbdb;
-    border-radius: 4px 4px 0px 0px;
-    padding: 4px 15px;
+    padding: 0px 15px;
+    border-color: #cbcbcb;
 }
 
 .botmate span.select2-selection {
-    border: none;
-    border-bottom: 1px solid #a3a3a3;
-    background: #dbdbdb;
-    border-radius: 4px 4px 0px 0px;
-    padding: 7px 6px;
+    padding: 2px 6px;
+    border-color: #cbcbcb;
 }
 
 .botmate .button.button-primary {
-    background: #ff3c00;
-    border-color: #ff3c00;
+    background: #f56c6c;
+    border-color: #f56c6c;
 }
 
 .botmate .button.button-secondary {
@@ -26,7 +20,7 @@
 }
 
 .botmate .button {
-    padding: 4px 15px;
+    line-height: 20px;
 }
 
 .botmate label {
@@ -41,8 +35,8 @@
 .bm-loader {
     border: 4px solid transparent;
     border-radius: 50%;
-    border-top: 4px solid #efff00;
-    border-bottom: 4px solid #efff00;
+    border-top: 4px solid #fff;
+    border-bottom: 4px solid #fff;
     width: 15px;
     height: 15px;
     -webkit-animation: spin 2s linear infinite;
@@ -67,7 +61,7 @@
 /*Global Styling Ends*/
 
 .bm-site-configuration {
-    border: 1px solid red;
+    border: 1px solid #0fb779;
     margin: 10px 0;
     padding: 25px;
 }

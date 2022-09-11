@@ -100,7 +100,7 @@ class MenuTrigger {
      */
     public function trigger_configuration() {
 
-        require 'views/html-actions.php';
+        require 'views/html-triggers.php';
 
     }
 

@@ -29,8 +29,10 @@ class MenuAction {
 
         if( get_post_type() == Init::ACTION_POST_TYPE ) {
 
-            wp_enqueue_script( 'botmate-admin' );
+            wp_enqueue_style( 'botmate-select2' );
             wp_enqueue_style( 'botmate-admin' );
+            wp_enqueue_script( 'botmate-select2' );
+            wp_enqueue_script( 'botmate-admin' );
 
         }
 

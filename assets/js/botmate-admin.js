@@ -30,5 +30,24 @@ jQuery( document ).ready( function () {
 
     } );
 
+    //Actions
+    jQuery('.bm-actions-select').select2({
+        placeholder: "Select Action"
+    });
+
+    jQuery( document ).on( 'change', '.bm-actions-select', function () {
+        console.log( 'Changed' );
+    } )
+
+    //Select Site
+    jQuery('.bm-actions-site-select').select2({
+        placeholder: "Select Site"
+    });
+
+    //Select Trigger
+    jQuery('.bm-actions-trigger-select').select2({
+        placeholder: "Select Site"
+    });
+
 
 } );

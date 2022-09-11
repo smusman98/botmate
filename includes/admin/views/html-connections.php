@@ -18,8 +18,8 @@
                     <label>Title <input type="text" value="<?php esc_attr_e( $site['title'] ) ?>" class="bm-title" /></label>
                     <label>Site URL <input type="text" value="<?php esc_attr_e( $site['url'] ) ?>" class="bm-url" /></label>
                     <label>API Key <input type="text" value="<?php esc_attr_e( $site['api_key'] ) ?>" class="bm-api-key" /></label>
-                    <button class="button button-primary bm-test-site-connection">Test Connection <div class="bm-loader"></div></button>
-                    <button class="button button-secondary bm-remove-site">Remove Site</button>
+                    <button class="button button-secondary bm-test-site-connection">Test Connection <div class="bm-loader"></div></button>
+                    <button class="button button-primary bm-remove-site">Remove Site</button>
                     <div class="bm-site-status"></div>
                 </div>
                 <?php
@@ -31,8 +31,8 @@
                 <label>Title <input type="text" class="bm-title" /></label>
                 <label>Site URL <input type="text" class="bm-url" /></label>
                 <label>API Key <input type="text" class="bm-api-key" /></label>
-                <button class="button button-primary bm-test-site-connection">Test Connection</button>
-                <button class="button button-secondary bm-remove-site">Remove Site</button>
+                <button class="button button-secondary bm-test-site-connection">Test Connection</button>
+                <button class="button button-primary bm-remove-site">Remove Site</button>
                 <div class="bm-site-status"></div>
             </div>
             <?php

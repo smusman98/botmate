@@ -123,3 +123,35 @@ function botmate_api_key_exists( $api_key ) {
 
 }
 endif;
+
+/**
+ * Gets saved Triggers
+ *
+ * @param $trigger_id
+ * @return mixed
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_saved_triggers' ) ):
+    function botmate_get_saved_triggers( $trigger_id ) {
+
+        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'triggers' );
+
+    }
+endif;
+
+/**
+ * Gets API Key by Trigger ID
+ *
+ * @param $trigger_id
+ * @return mixed
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_api_key' ) ):
+function botmate_get_api_key( $trigger_id ) {
+
+    return  \BotMate\Classes\Database::get_meta( $trigger_id, 'api_key' );
+
+}
+endif;
