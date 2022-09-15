@@ -1,14 +1,15 @@
 <?php
 
 $triggers = botmate_get_triggers_classes();
-$trigger_id = get_the_ID();
+$post_id = get_the_ID();
+$sites = botmate_get_sites();
 
 ?>
     <div class="botmate">
         <div class="bm-trigger-config">
             <?php
             /**
-             * Fires before Trigger Configuration form
+             * Fires before trigger Configuration form
              *
              * @since 1.0
              */
@@ -16,16 +17,13 @@ $trigger_id = get_the_ID();
             ?>
             <input type="hidden" class="bm-security" value="<?php esc_attr_e( wp_create_nonce( 'bm-generate-api-key' ) ) ?>">
             <table cellpadding="10">
-                <tr>
-                    <td>API Key:</td>
-                    <td><input type="text" class="bm-api-key" value="<?php echo esc_attr( botmate_get_api_key( $trigger_id ) ); ?>" name="bm_api_key" /><button class="button button-primary bm-generate-api-key">Generate Key <div class="bm-loader"></div></button></td>
-                </tr>
-                <tr>
-                    <td>Allowed Triggers: </td>
+                <tr class="bm-trigger-row">
                     <td>
-                        <select class="bm-triggers-select" style="width: 40%;" multiple="multiple" name="bm_triggers[]">
+                        <label for="">Select Trigger</label>
+                        <select class="bm-triggers-select" style="width: 100%;" name="bm_trigger">
+                            <option value="">Select Trigger</option>
                             <?php
-                            $saved_triggers = botmate_get_saved_triggers( $trigger_id );
+                            $saved_triggers = get_post_meta( $post_id, 'triggers', true );
 
                             foreach ( $triggers as $trigger ) {
 
@@ -38,16 +36,45 @@ $trigger_id = get_the_ID();
                             }
                             ?>
                         </select>
+                        <div><sup>When trigger happen on current site.</sup></div>
                     </td>
-                </tr>
-                <tr>
-                    <td>Site URL:</td>
-                    <td><?php echo esc_attr( get_site_url() ) . '/'; ?></td>
+                    <td>
+                        <label for="">Select Site</label>
+                        <select class="bm-triggers-site-select" style="width: 100%;" name="bm_triggers_site">
+                            <option value="">Select Site</option>
+                            <?php
+                            if( $sites ) {
+                                foreach ( $sites as $site ) {
+                                    ?>
+                                    <option value="<?php echo esc_attr( $site['api_key'] ) ?>" data-site="<?php echo esc_url( $site['url'] ) ?>"><?php echo esc_html( $site['title'] ) ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <div><sup>Where Action should happen.</sup></div>
+                    </td>
+                    <td>
+                        <label for="">Select Action</label>
+                        <select class="bm-triggers-action-select" style="width: 100%;" name="bm_triggers_trigger">
+                            <option value="">Select Action</option>
+                            <?php
+                            if( $sites ) {
+                                foreach ( $sites as $site ) {
+                                    ?>
+                                    <option value="<?php echo esc_attr( $site['api_key'] ) ?>" data-site="<?php echo esc_url( $site['url'] ) ?>"><?php echo esc_html( $site['title'] ) ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <div><sup>What should happen to the selected site.</sup></div>
+                    </td>
                 </tr>
             </table>
             <?php
             /**
-             * Fires after Trigger Configuration form
+             * Fires after trigger Configuration form
              *
              * @since 1.0
              */

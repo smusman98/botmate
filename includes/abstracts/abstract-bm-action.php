@@ -68,6 +68,18 @@ abstract class Action {
     }
 
     /**
+     * Gets the fields for the setup
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public function test_fields() {
+
+
+
+    }
+
+    /**
      * Registers Trigger
      *
      * @since 1.0

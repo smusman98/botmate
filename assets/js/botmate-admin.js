@@ -1,8 +1,9 @@
 jQuery( document ).ready( function () {
 
-    //Triggers 
-    jQuery('.bm-triggers-select').select2({
-        placeholder: "Select Triggers"
+    //html-actions
+    //Action
+    jQuery('.bm-actions-select').select2({
+        placeholder: "Select Actions"
     });
 
     //Generate API Key
@@ -30,24 +31,24 @@ jQuery( document ).ready( function () {
 
     } );
 
+    //html-triggers
     //Actions
-    jQuery('.bm-actions-select').select2({
-        placeholder: "Select Action"
+    jQuery('.bm-triggers-select').select2({
+        placeholder: "Select Trigger"
     });
 
-    jQuery( document ).on( 'change', '.bm-actions-select', function () {
+    //Select Site
+    jQuery('.bm-triggers-site-select').select2({
+        placeholder: "Select Site"
+    });
+
+    jQuery( document ).on( 'change', '.bm-triggers-site-select', function () {
         console.log( 'Changed' );
     } )
 
-    //Select Site
-    jQuery('.bm-actions-site-select').select2({
+    //Select Action
+    jQuery('.bm-triggers-action-select').select2({
         placeholder: "Select Site"
     });
-
-    //Select Trigger
-    jQuery('.bm-actions-trigger-select').select2({
-        placeholder: "Select Site"
-    });
-
 
 } );

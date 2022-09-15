@@ -125,17 +125,17 @@ function botmate_api_key_exists( $api_key ) {
 endif;
 
 /**
- * Gets saved Triggers
+ * Gets saved Actions
  *
  * @param $trigger_id
  * @return mixed
  * @since 1.0
  * @version 1.0
  */
-if( !function_exists( 'botmate_get_saved_triggers' ) ):
-    function botmate_get_saved_triggers( $trigger_id ) {
+if( !function_exists( 'botmate_get_saved_actions' ) ):
+    function botmate_get_saved_actions( $trigger_id ) {
 
-        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'triggers' );
+        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'actions' );
 
     }
 endif;

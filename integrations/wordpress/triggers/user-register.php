@@ -5,15 +5,15 @@ namespace BotMate\Integrations\WordPress\Triggers;
 use BotMate\Trigger;
 
 /**
- * WP_Insert_User Class
+ * User_Register Class
  * 
  * @since 1.0
  * @version 1.0
  */
-class WP_Insert_User extends Trigger {
+class User_Register extends Trigger {
 
     /**
-     * WP_Insert_User constructor
+     * User_Register constructor
      *
      * @param array $args
      * @version 1.0
@@ -22,9 +22,9 @@ class WP_Insert_User extends Trigger {
     public function __construct( $args = array() )
     {
         $args = array(
-            'id'            =>  'wp_insert_user',
-            'title'         =>  'WordPress Insert User',
-            'description'   =>  'Inserts a user into the database.',
+            'id'            =>  'user_register',
+            'title'         =>  'User Register',
+            'description'   =>  'Fires immediately after a new user is registered.',
             'logo'          =>  BOTMATE_INTEGRATIONS_URL . 'wordpress/assets/logo.png'
         );
 

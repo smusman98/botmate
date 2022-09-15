@@ -5,7 +5,7 @@ namespace BotMate\Integrations\WordPress\Actions;
 use BotMate\Action;
 
 /**
- * WP_Insert_User Class
+ * User_Register Class
  *
  * @since 1.0
  * @version 1.0
@@ -13,7 +13,7 @@ use BotMate\Action;
 class WP_Insert_User extends Action {
 
     /**
-     * WP_Insert_User constructor
+     * User_Register constructor
      *
      * @param array $args
      * @version 1.0
@@ -29,6 +29,21 @@ class WP_Insert_User extends Action {
         );
 
         parent::__construct( $args );
+    }
+
+
+    /**
+     * Gets the fields for the setup
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public function test_fields() {
+
+        return array(
+
+        );
+
     }
 
 
