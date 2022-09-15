@@ -127,15 +127,31 @@ endif;
 /**
  * Gets saved Actions
  *
- * @param $trigger_id
+ * @param $action_id
  * @return mixed
  * @since 1.0
  * @version 1.0
  */
 if( !function_exists( 'botmate_get_saved_actions' ) ):
-    function botmate_get_saved_actions( $trigger_id ) {
+    function botmate_get_saved_actions( $action_id ) {
 
-        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'actions' );
+        return  \BotMate\Classes\Database::get_meta( $action_id, 'actions' );
+
+    }
+endif;
+
+/**
+ * Gets saved Triggers
+ *
+ * @param $trigger_id
+ * @return mixed
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_saved_triggers' ) ):
+    function botmate_get_saved_triggers( $trigger_id ) {
+
+        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'triggers' );
 
     }
 endif;

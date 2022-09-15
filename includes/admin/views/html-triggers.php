@@ -1,7 +1,7 @@
 <?php
 
 $triggers = botmate_get_triggers_classes();
-$post_id = get_the_ID();
+$trigger_id = get_the_ID();
 $sites = botmate_get_sites();
 
 ?>
@@ -23,7 +23,7 @@ $sites = botmate_get_sites();
                         <select class="bm-triggers-select" style="width: 100%;" name="bm_trigger">
                             <option value="">Select Trigger</option>
                             <?php
-                            $saved_triggers = get_post_meta( $post_id, 'triggers', true );
+                            $saved_triggers = botmate_get_saved_triggers( $trigger_id );
 
                             foreach ( $triggers as $trigger ) {
 
