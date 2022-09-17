@@ -43,7 +43,12 @@ jQuery( document ).ready( function () {
     });
 
     jQuery( document ).on( 'change', '.bm-triggers-site-select', function () {
-        console.log( 'Changed' );
+
+        var selectedSite = jQuery( this ).find( ':selected' );
+        var apiKey = jQuery( selectedSite ).val();
+        var baseURL = jQuery( selectedSite ).data( 'site' );
+        console.log( apiKey, baseURL );
+
     } )
 
     //Select Action
