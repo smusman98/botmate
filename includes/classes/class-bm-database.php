@@ -106,6 +106,27 @@ class Database {
     }
 
     /**
+     * Get actions by API Key
+     * 
+     * @param $api_key
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function get_actions_by_api_key( $api_key ) {
+
+        global $wpdb;
+        $result = $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value = %s",
+                $api_key
+            )
+        );
+
+        return self::get_meta( $result->post_id,  'actions' );
+
+    }
+
+    /**
      * Runs on Plugin activation :)
      *
      * @since 1.0

@@ -171,3 +171,18 @@ function botmate_get_api_key( $trigger_id ) {
 
 }
 endif;
+
+/**
+ * Get actions by API Key
+ * 
+ * @param $api_key
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_actions_by_api_key' ) ):
+function botmate_get_actions_by_api_key( $api_key ) {
+
+    return  \BotMate\Classes\Database::get_actions_by_api_key( $api_key );
+
+}
+endif;
