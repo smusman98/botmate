@@ -91,4 +91,24 @@ abstract class Action {
 
     }
 
+    /**
+     * Action accepting fields
+     *
+     * Key (receiver variable), Value (associative array())
+     * @example array( 
+     *      'user_name'  => array( 
+     *          'label'     =>  'User Name',
+     *          'required'  =>  'required' 
+     *      ) 
+     * )
+     * @return array 
+     * @since 1.0
+     * @version 1.0
+     */
+    public function fields() {
+
+        return array();
+
+    }
+
 }

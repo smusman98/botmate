@@ -122,7 +122,23 @@ class Database {
             )
         );
 
-        return self::get_meta( $result->post_id,  'actions' );
+        $all_actions = botmate_get_actions_classes();
+        $stored_actions = self::get_meta( $result->post_id,  'actions' );
+        $organized_actions = array();
+
+        foreach ( $all_actions as $action ) {
+
+            $class = new $action;
+            
+            if( in_array( $class->id, $stored_actions ) ) {
+
+                $organized_actions[$class->id] = $class;
+
+            }
+
+        }
+
+        return $organized_actions;
 
     }
 

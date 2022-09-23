@@ -186,3 +186,22 @@ function botmate_get_actions_by_api_key( $api_key ) {
 
 }
 endif;
+
+/**
+ * Call the mehtod of action
+ * 
+ * @param $action_unique_id
+ * @param $method
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_call_action_method' ) ):
+function botmate_call_action_method( $action_unique_id, $method ) {
+
+    $actions = botmate_get_actions_classes();
+    $action = new $actions[$action_unique_id]();
+
+    return $action->$method();
+
+}
+endif;
