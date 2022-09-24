@@ -42,18 +42,72 @@ jQuery( document ).ready( function () {
         placeholder: "Select Site"
     });
 
+    //Get actions from API
     jQuery( document ).on( 'change', '.bm-triggers-site-select', function () {
 
         var selectedSite = jQuery( this ).find( ':selected' );
         var apiKey = jQuery( selectedSite ).val();
         var baseURL = jQuery( selectedSite ).data( 'site' );
-        console.log( apiKey, baseURL );
+        var security = jQuery( '.bm-security' ).val();
 
-    } )
+        jQuery.ajax( {
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'bm-get-actions',
+                api_key: apiKey,
+                base_url: baseURL,
+                _nonce: security
+            },
+            beforeSend: function() {
+
+                jQuery( '.bm-triggers-action-select' ).html( '<option>Fetching Actions...</option>' );
+
+            },
+            success: function( response ) {
+
+                jQuery( '.bm-triggers-action-select' ).html( `<option>Select Action</option>` );
+                jQuery.each( response.data, function ( index, value ){
+                    jQuery( '.bm-triggers-action-select' ).append( `<option value="${value['id']}" data-api="${apiKey}" data-site="${baseURL}">${value['title']}</option>` );
+                } )
+
+            },
+            error: function( response ) {
+
+                jQuery( '.bm-triggers-action-select' ).html( 'Check Console by pressing F12' );
+                console.log( response );
+
+            },
+        } );
+
+    } );
+
+    //Get action fields from API
+    jQuery( document ).on( 'change', '.bm-triggers-action-select', function() {
+
+        var selectedTrigger = jQuery( this ).find( ':selected' );
+        var apiKey = jQuery( selectedTrigger ).data( 'api' );
+        var baseURL = jQuery( selectedTrigger ).data( 'site' );
+        var bmAction = jQuery( selectedTrigger ).val();
+        var security = jQuery( '.bm-security' ).val();
+
+        jQuery.ajax( {
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'bm-get-action-fields',
+                api_key: apiKey,
+                base_url: baseURL,
+                bm_action: bmAction,
+                _nonce: security
+            }
+        } );
+
+    } );
 
     //Select Action
     jQuery('.bm-triggers-action-select').select2({
-        placeholder: "Select Site"
+        placeholder: "Select Site to get Actions"
     });
 
 } );

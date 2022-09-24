@@ -56,18 +56,7 @@ $sites = botmate_get_sites();
                     </td>
                     <td>
                         <label for="">Select Action</label>
-                        <select class="bm-triggers-action-select" style="width: 100%;" name="bm_triggers_trigger">
-                            <option value="">Select Action</option>
-                            <?php
-                            if( $sites ) {
-                                foreach ( $sites as $site ) {
-                                    ?>
-                                    <option value="<?php echo esc_attr( $site['api_key'] ) ?>" data-site="<?php echo esc_url( $site['url'] ) ?>"><?php echo esc_html( $site['title'] ) ?></option>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </select>
+                        <select class="bm-triggers-action-select" style="width: 100%;" name="bm_triggers_action"></select>
                         <div><sup>What should happen to the selected site.</sup></div>
                     </td>
                 </tr>
