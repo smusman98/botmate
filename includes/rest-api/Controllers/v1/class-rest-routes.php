@@ -198,7 +198,7 @@ class RestRoutes {
 
         $headers = $request->get_headers();
         $parameters = $request->get_params();
-
+        
         if( !isset( $headers['x_api_key'][0] ) || empty( $headers['x_api_key'][0] ) ) {
 
             wp_send_json_error( 
@@ -219,7 +219,7 @@ class RestRoutes {
         if( $api_key_exists ) {
 
             $actions = botmate_get_actions_by_api_key( $api_key );
-            $action = $parameters['action'];
+            $action = $body['action'];
             $with_this_api_key = $action ? array_key_exists( $action, $actions ) : false;
 
             if( isset( $action ) && $with_this_api_key ) {
