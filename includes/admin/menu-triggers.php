@@ -2,6 +2,8 @@
 
 namespace BotMate;
 
+use BotMate\Server\v1\Server;
+
 class MenuTrigger {
 
     /**
@@ -15,6 +17,9 @@ class MenuTrigger {
         add_action( 'init', array( $this, 'register_trigger_post' ) );
         add_action( 'add_meta_boxes', array( $this, 'register_trigger_config_metabox' ) );
         add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        add_action( 'wp_ajax_bm-get-actions', array( $this, 'get_actions' ) );
+        add_action( 'wp_ajax_bm-get-action-fields', array( $this, 'get_action_fields' ) );
+        add_action( 'save_post_' . Init::TRIGGER_POST_TYPE, array( $this, 'save_trigger' ) );
 
     }
 
@@ -99,6 +104,84 @@ class MenuTrigger {
     public function trigger_configuration() {
 
         require 'views/html-triggers.php';
+
+    }
+
+    /**
+     * Get Actions | AJAX
+     *
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public function get_actions() {
+
+        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+
+        $base_url = isset( $_POST['base_url'] ) ? sanitize_url( $_POST['base_url'] ) : '';
+        $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
+
+        $server = new Server( $base_url, $api_key );
+        $response = $server->request( 'GET', '/get-actions' );
+        $code = wp_remote_retrieve_response_code( $response );
+        $response = wp_remote_retrieve_body( $response );
+
+
+        wp_send_json(
+            json_decode( $response ),
+            $code
+        );
+
+    }
+
+
+    /**
+     * Get Action Fields | AJAX
+     *
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public function get_action_fields() {
+
+        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+
+        $base_url = isset( $_POST['base_url'] ) ? sanitize_url( $_POST['base_url'] ) : '';
+        $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
+        $action = isset( $_POST['bm_action'] ) ? sanitize_text_field( $_POST['bm_action'] ) : '';
+        $header = array(
+            'Content-type'  =>  'application/json'
+        );
+        $body = array(
+            'action'  =>  $action
+        );
+
+        $server = new Server( $base_url, $api_key );
+        $server->header( $header );
+        $server->body( $body );
+        $response = $server->request( 'GET', '/get-action-fields' );
+        $code = wp_remote_retrieve_response_code( $response );
+        $response = wp_remote_retrieve_body( $response );
+
+        var_dump( $code, $response );
+        die;
+
+    }
+
+    /**
+     * Save the Triggers | Action Callback
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public function save_trigger( $post_id ) {
+
+        $data = array();
+        $data['trigger'] = !empty( $_POST['bm_trigger'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_trigger'] ) ) : '';
+        $data['site'] = !empty( $_POST['bm_triggers_site'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_triggers_site'] ) ) : '';
+        $data['action'] = !empty( $_POST['bm_triggers_action'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_triggers_action'] ) ) : '';
+
+        update_post_meta( $post_id, 'trigger_configuration', $data );
 
     }
 

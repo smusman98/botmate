@@ -85,4 +85,17 @@ abstract class Trigger {
 
     }
 
+    /**
+     * Trigger returning fields
+     *
+     * @return array Key (returning variable), Value (Definition of Variable aka PHPDoc)
+     * @since 1.0
+     * @version 1.0
+     */
+    public function fields() {
+
+        return array();
+
+    }
+
 }

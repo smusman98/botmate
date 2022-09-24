@@ -38,6 +38,22 @@ class Server {
     private $api_key = '';
 
     /**
+     * Request Header
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    private $header = array();
+
+    /**
+     * Request Body
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    private $body = array();
+
+    /**
      * Server constructor.
      *
      * @param string $base_url Base URL
@@ -60,26 +76,11 @@ class Server {
      * @since 1.0
      * @version 1.0
      */
-    private function header( $api_key = '', $additional_header = array() ) {
+    public function header( $additional_header = array() ) {
 
-        $api_key = empty( $api_key ) ? $this->api_key : $api_key;
+        $this->header = $additional_header;
 
-        $header = array(
-            'X-Api-Key' =>  $api_key
-        );
-
-        $header = array_merge( $header, $additional_header );
-
-        /**
-         * Filters the header of Remote Request 
-         * 
-         * @param array $header Header
-         * 
-         * @since 1.0
-         */
-        $header = apply_filters( 'botmate_server_request_header', $header );
-
-        return $header;
+        return $this->header;
 
     }
 
@@ -90,18 +91,11 @@ class Server {
      * @since 1.0
      * @version 1.0
      */
-    private function body( $body = array() ) {
+    public function body( $body = array() ) {
 
-        /**
-         * Filters the body of Remote Request 
-         * 
-         * @param array $header Header
-         * 
-         * @since 1.0
-         */
-        $body = apply_filters( 'botmate_server_request_body', $body );
+        $this->body = $body;
 
-        return $body;
+        return $this->body;
 
     }
 
@@ -119,10 +113,36 @@ class Server {
 
         $url = $this->base_url . $endpoint;
 
+        $header = array(
+            'X-Api-Key' =>  $this->api_key
+        );
+
+        $additional_header = array_merge( $header, $this->header );
+
+        /**
+         * Filters the header of Remote Request
+         *
+         * @param array $header Header
+         *
+         * @since 1.0
+         */
+        $header = apply_filters( 'botmate_server_request_header', $additional_header );
+
+        $body = $this->body;
+
+        /**
+         * Filters the body of Remote Request
+         *
+         * @param array $header Header
+         *
+         * @since 1.0
+         */
+        $body = apply_filters( 'botmate_server_request_body', $body );
+
         $args = array(
             'method'    =>  $method,
-            'headers'   =>  $this->header(),
-            'body'      =>  $this->body()
+            'headers'   =>  $header,
+            'body'      =>  $body
         );
 
         /**
