@@ -8,7 +8,7 @@ jQuery( document ).ready( function () {
 
     //Generate API Key
     jQuery( document ).on( 'click', '.bm-generate-api-key', function( e ) {
-        
+
         e.preventDefault();
         security = jQuery( '.bm-security' ).val();
         jQuery.ajax( {
@@ -100,6 +100,60 @@ jQuery( document ).ready( function () {
                 base_url: baseURL,
                 bm_action: bmAction,
                 _nonce: security
+            },
+            success: function ( response ) {
+
+                var data = response.data;
+                var rowCount = 0;
+
+                jQuery.each( data, function( index, value ) {
+
+                    var lastRow = jQuery( '.bm-trigger-row' );
+                    var totalRows = lastRow.length;
+                    lastRow = lastRow[totalRows - 1];
+
+                    var name = index.replace( '$', '' );
+                    name = name.replace( /_/g, ' ' );
+
+                    if( rowCount == 0 ) {
+
+                        jQuery( lastRow ).after(
+                            `<tr class="bm-trigger-row">`
+                        );
+
+                    }
+
+                    lastRow = jQuery( '.bm-trigger-row' );
+                    totalRows = lastRow.length;
+                    lastRow = lastRow[totalRows - 1];
+
+                    jQuery( lastRow ).append(
+                        `
+                    <td>
+                        <label for="">${name}</label>
+                        <select class="bm-action-field ${name}" style="width: 100%;" name="${name}">
+                        </select>
+                        <div><sup>${value.description}</sup></div>
+                    </td>
+                    `
+                    );
+
+
+                    rowCount = rowCount + 1;
+
+                    if( rowCount == 3 ) {
+
+                        jQuery( lastRow ).after(
+                            `</tr>`
+                        );
+
+                        rowCount = 0;
+
+                    }
+
+
+                } );
+
             }
         } );
 
