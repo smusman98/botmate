@@ -134,6 +134,19 @@ class MenuTrigger {
 
     }
 
+    /**
+     * Renders the Action Fields
+     * @param $fields
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public function render_action_fileds( $fields ) {
+
+        var_dump( $fields );die;
+
+    }
+
 
     /**
      * Get Action Fields | AJAX
@@ -163,8 +176,10 @@ class MenuTrigger {
         $code = wp_remote_retrieve_response_code( $response );
         $response = wp_remote_retrieve_body( $response );
 
-        var_dump( $code, $response );
-        die;
+        wp_send_json(
+            json_decode( $response ),
+            $code
+        );
 
     }
 
