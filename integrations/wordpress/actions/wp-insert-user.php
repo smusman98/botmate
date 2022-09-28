@@ -70,73 +70,73 @@ class WP_Insert_User extends Action {
 
         return array(
             '$user_id'              =>  array(
-                'label' =>  'User ID. If supplied, the user will be updated.'
+                'description' =>  'User ID. If supplied, the user will be updated.'
             ),
             '$user_pass'            =>  array(
-                'label' =>  'The plain-text user password.'
+                'description' =>  'The plain-text user password.'
             ),
             '$user_login'           =>  array(
-                'label' =>  'The user\'s login username.'
+                'description' =>  'The user\'s login username.'
             ),
             '$user_nicename'        =>  array(
-                'label' =>  'The URL-friendly user name.'
+                'description' =>  'The URL-friendly user name.'
             ),
             '$user_url'             =>  array(
-                'label' =>  'The user URL.'
+                'description' =>  'The user URL.'
             ),
             '$user_email'           =>  array(
-                'label' =>  'The user email address.'
+                'description' =>  'The user email address.'
             ),
             '$display_name'         =>  array(
-                'label' =>  'The user\'s display name. Default is the user\'s username.'
+                'description' =>  'The user\'s display name. Default is the user\'s username.'
             ),
             '$nickname'             =>  array(
-                'label' =>  'The user\'s nickname. Default is the user\'s username.'
+                'description' =>  'The user\'s nickname. Default is the user\'s username.'
             ),
             '$first_name'           =>  array(
-                'label' =>  'The user\'s first name. For new users, will be used to build the first part of the user\'s display name if `$display_name` is not specified.' 
+                'description' =>  'The user\'s first name. For new users, will be used to build the first part of the user\'s display name if `$display_name` is not specified.' 
             ),
             '$last_name'            =>  array(
-                'label' =>  'The user\'s last name. For new users, will be used to build the second part of the user\'s display name if `$display_name` is not specified.'
+                'description' =>  'The user\'s last name. For new users, will be used to build the second part of the user\'s display name if `$display_name` is not specified.'
             ),
             '$description'          =>  array(
-                'label' =>  'The user\'s biographical description.'
+                'description' =>  'The user\'s biographical description.'
             ),
             '$rich_editing'         =>  array(
-                'label' =>  'Whether to enable the rich-editor for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\'.'
+                'description' =>  'Whether to enable the rich-editor for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\'.'
             ),
             '$syntax_highlighting'  =>  array(
-                'label' =>  'Whether to enable the rich code editor for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\''
+                'description' =>  'Whether to enable the rich code editor for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\''
             ),
             '$comment_shortcuts'    =>  array(
-                'label' =>  'Whether to enable comment moderation keyboard shortcuts for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'false\'.'
+                'description' =>  'Whether to enable comment moderation keyboard shortcuts for the user. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'false\'.'
             ),
             '$admin_color'          =>  array(
-                'label' =>  'Admin color scheme for the user. Default \'fresh\'.'
+                'description' =>  'Admin color scheme for the user. Default \'fresh\'.'
             ),
             '$use_ssl'              =>  array(
-                'label' =>  'Whether the user should always access the admin over https. Default false.'
+                'description' =>  'Whether the user should always access the admin over https. Default false.'
             ),
             '$user_registered'      =>  array(
-                'label' =>  'Date the user registered in UTC. Format is \'Y-m-d H:i:s\'.'
+                'description' =>  'Date the user registered in UTC. Format is \'Y-m-d H:i:s\'.'
             ),
             '$user_activation_key'  =>  array(
-                'label' =>  'Password reset key. Default empty.'
+                'description' =>  'Password reset key. Default empty.'
             ),
             '$spam'                 =>  array(
-                'label' =>  'Multisite only. Whether the user is marked as spam. Default false.'
+                'description' =>  'Multisite only. Whether the user is marked as spam. Default false.'
             ),
             '$show_admin_bar_front' =>  array(
-                'label' =>  'Whether to display the Admin Bar for the user on the site\'s front end. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\'.'
+                'description' =>  'Whether to display the Admin Bar for the user on the site\'s front end. Accepts \'true\' or \'false\' as a string literal, not boolean. Default \'true\'.'
             ),
             '$role'                 =>  array(
-                'label' =>  'User\'s role.'
+                'description' =>  'User\'s role.'
             ),
             '$locale'               =>  array(
-                'label' =>  'User\'s locale. Default empty.'
+                'description' =>  'User\'s locale. Default empty.'
             ),
             '$meta_input'           =>  array(
-                'label' =>  'Array of custom user meta values keyed by meta key. Default empty.'
+                'description' =>  'Array of custom user meta values keyed by meta key. Default empty.'
             )
         );
 

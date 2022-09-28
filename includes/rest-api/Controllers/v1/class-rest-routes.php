@@ -197,7 +197,7 @@ class RestRoutes {
     public function get_action_fields( \WP_REST_Request $request ) {
 
         $headers = $request->get_headers();
-        $parameters = $request->get_params();
+        $body = $request->get_params();
         
         if( !isset( $headers['x_api_key'][0] ) || empty( $headers['x_api_key'][0] ) ) {
 
