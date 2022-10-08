@@ -86,6 +86,7 @@ jQuery( document ).ready( function () {
     jQuery( document ).on( 'change', '.bm-triggers-action-select', function() {
 
         var selectedTrigger = jQuery( this ).find( ':selected' );
+        var selectedAction = jQuery( '.bm-triggers-select' ).find( ':selected' ).val();
         var apiKey = jQuery( selectedTrigger ).data( 'api' );
         var baseURL = jQuery( selectedTrigger ).data( 'site' );
         var bmAction = jQuery( selectedTrigger ).val();
@@ -99,21 +100,47 @@ jQuery( document ).ready( function () {
                 api_key: apiKey,
                 base_url: baseURL,
                 bm_action: bmAction,
+                selected_action: selectedAction,
                 _nonce: security
             },
             success: function ( response ) {
 
-                var data = response.data;
+                var bmAction = response.action.data;
                 var rowCount = 0;
 
-                jQuery.each( data, function( index, value ) {
+                jQuery( '.fetched-action-fields' ).val( JSON.stringify( response.action.data ) );
+                jQuery( '.fetched-trigger-options' ).val( JSON.stringify( response.trigger ) );
+                jQuery( '.bm-trigger-found' ).html( 'When Trigger happen, Insert field to Action Input' );
+                jQuery( '.bm-saved-automation-rows' ).empty();
+
+                var bmTriggerFields = `
+                <option value="">
+                    Select Trigger Field
+                </option>
+                `;
+                var bmTrigger = response.trigger;
+
+                jQuery.each( bmTrigger, function( index, value ){
+
+                    //Gather Options
+                    var name = index.replace( '$', '' );
+                    bmTriggerFields += `
+                    <option value="${name}">
+                        {${name}} - ${value}
+                    </option>
+                    `;
+
+                } );
+
+                //Render Trigger Fields
+                jQuery.each( bmAction, function( index, value ) {
 
                     var lastRow = jQuery( '.bm-trigger-row' );
                     var totalRows = lastRow.length;
                     lastRow = lastRow[totalRows - 1];
 
                     var name = index.replace( '$', '' );
-                    name = name.replace( /_/g, ' ' );
+                    var label = name.replace( /_/g, ' ' );
 
                     if( rowCount == 0 ) {
 
@@ -128,14 +155,13 @@ jQuery( document ).ready( function () {
                     lastRow = lastRow[totalRows - 1];
 
                     jQuery( lastRow ).append(
-                        `
-                    <td>
-                        <label for="">${name}</label>
-                        <select class="bm-action-field ${name}" style="width: 100%;" name="${name}">
-                        </select>
-                        <div><sup>${value.description}</sup></div>
-                    </td>
-                    `
+                        `<td>
+                            <label for="">${label}</label>
+                            <select class="bm-action-field ${name}" style="width: 100%;" name="bm_trigger_action[${name}]">
+                                ${bmTriggerFields}
+                            </select>
+                            <div><sup>${value.description}</sup></div>
+                        </td>`
                     );
 
 
@@ -158,6 +184,8 @@ jQuery( document ).ready( function () {
         } );
 
     } );
+
+    jQuery( '.bm-action-field' ).select2();
 
     //Select Action
     jQuery('.bm-triggers-action-select').select2({

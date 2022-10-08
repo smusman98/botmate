@@ -205,3 +205,39 @@ function botmate_call_action_method( $action_unique_id, $method ) {
 
 }
 endif;
+
+
+/**
+ * Call the mehtod of trigger
+ *
+ * @param $trigger_unique_id
+ * @param $method
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_call_trigger_method' ) ):
+function botmate_call_trigger_method( $trigger_unique_id, $method ) {
+
+    $triggers = botmate_get_triggers_classes();
+    $trigger = new $triggers[$trigger_unique_id]();
+
+    return $trigger->$method();
+
+}
+endif;
+
+/**
+ * Gets Trigger Configuration
+ *
+ * @param $trigger_id
+ * @return mixed
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_trigger_config' ) ):
+    function botmate_get_trigger_config( $trigger_id ) {
+
+        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'trigger_configuration' );
+
+    }
+endif;

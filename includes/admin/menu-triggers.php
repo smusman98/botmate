@@ -3,6 +3,7 @@
 namespace BotMate;
 
 use BotMate\Server\v1\Server;
+use Couchbase\KeyExistsException;
 
 class MenuTrigger {
 
@@ -136,6 +137,7 @@ class MenuTrigger {
 
     /**
      * Renders the Action Fields
+     *
      * @param $fields
      * @return void
      * @since 1.0
@@ -162,6 +164,7 @@ class MenuTrigger {
         $base_url = isset( $_POST['base_url'] ) ? sanitize_url( $_POST['base_url'] ) : '';
         $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
         $action = isset( $_POST['bm_action'] ) ? sanitize_text_field( $_POST['bm_action'] ) : '';
+        $selected_action = isset( $_POST['selected_action'] ) ? sanitize_text_field( $_POST['selected_action'] ) : '';
         $header = array(
             'Content-type'  =>  'application/json'
         );
@@ -175,9 +178,13 @@ class MenuTrigger {
         $response = $server->request( 'GET', '/get-action-fields' );
         $code = wp_remote_retrieve_response_code( $response );
         $response = wp_remote_retrieve_body( $response );
+        $response = array(
+            'action'    =>  json_decode( $response ),
+            'trigger'   =>  botmate_call_trigger_method( $selected_action, 'fields' )
+        );
 
         wp_send_json(
-            json_decode( $response ),
+            $response,
             $code
         );
 
@@ -192,9 +199,49 @@ class MenuTrigger {
     public function save_trigger( $post_id ) {
 
         $data = array();
-        $data['trigger'] = !empty( $_POST['bm_trigger'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_trigger'] ) ) : '';
-        $data['site'] = !empty( $_POST['bm_triggers_site'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_triggers_site'] ) ) : '';
-        $data['action'] = !empty( $_POST['bm_triggers_action'] ) ? sanitize_text_field( sanitize_text_field( $_POST['bm_triggers_action'] ) ) : '';
+        $data['trigger'] = !empty( $_POST['bm_trigger'] ) ? sanitize_text_field( $_POST['bm_trigger'] ) : '';
+        $data['site'] = !empty( $_POST['bm_triggers_site'] ) ? sanitize_text_field( $_POST['bm_triggers_site'] ) : '';
+        $data['action'] = !empty( $_POST['bm_triggers_action'] ) ? sanitize_text_field( $_POST['bm_triggers_action'] ) : '';
+        $fetched_trigger_options = !empty( $_POST['fetched_trigger_options'] ) ? sanitize_text_field( stripslashes( $_POST['fetched_trigger_options'] ) ) : '';
+        $fetched_trigger_options = json_decode( $fetched_trigger_options );
+        $fetched_action_fields = !empty( $_POST['fetched_action_fields'] ) ? sanitize_text_field( stripslashes( $_POST['fetched_action_fields'] ) ) : '';
+        $fetched_action_fields = json_decode( $fetched_action_fields );
+
+        //Remove Dollars
+        foreach ( $fetched_trigger_options as $key => $value ) {
+
+            $new_key = str_replace( '$', '', $key );
+            $data['fetched_trigger_options'][$new_key] =  $value;
+
+        }
+
+        //Remove Dollars
+        foreach ( $fetched_action_fields as $key => $value ) {
+
+            $new_key = str_replace( '$', '', $key );
+            $data['fetched_action_fields'][$new_key] =  $value;
+
+        }
+
+        //Store Selected Action on Trigger Configuration
+        if( isset( $_POST['bm_trigger_action'] ) ) {
+
+            foreach( $_POST['bm_trigger_action'] as $key => $trigger ) {
+
+                $data['selected_trigger_action'][$key] = !empty( $trigger ) ? sanitize_text_field( $trigger ) : '';
+
+            }
+
+        }
+
+        /**
+         * Filters Trigger Configuration
+         *
+         * @param $data array
+         * @since 1.0
+         * @version 1.0
+         */
+        $data = apply_filters( 'bm_save_trigger_configuration', $data );
 
         update_post_meta( $post_id, 'trigger_configuration', $data );
 

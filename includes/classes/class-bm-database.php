@@ -106,6 +106,22 @@ class Database {
     }
 
     /**
+     * Update Postmeta by Key
+     *
+     * @param $post_id
+     * @param $key
+     * @param $value
+     * @return mixed
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function update_meta( $post_id, $key, $value ) {
+
+        return update_post_meta( $post_id, $key, $value );
+
+    }
+
+    /**
      * Get actions by API Key
      * 
      * @param $api_key
