@@ -79,17 +79,16 @@ abstract class Action {
 
     }
 
+
     /**
-     * Registers Trigger
-     *
+     * Does this action
+     * 
+     * @param Array $args Arguments 
      * @since 1.0
      * @version 1.0
      */
-    public function register_action() {
+    abstract public function do_action( $args );
 
-
-
-    }
 
     /**
      * Action accepting fields
@@ -105,10 +104,6 @@ abstract class Action {
      * @since 1.0
      * @version 1.0
      */
-    public function fields() {
-
-        return array();
-
-    }
+    abstract public function fields();
 
 }

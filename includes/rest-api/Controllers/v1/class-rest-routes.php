@@ -65,6 +65,11 @@ class RestRoutes {
             'callback'  =>  array( $this, 'get_action_fields' )
         ) );
 
+        register_rest_route( $this->namespace, '/do-action', array(
+            'methods'   =>  \WP_REST_Server::CREATABLE,
+            'callback'  =>  array( $this, 'do_action' )
+        ) );
+
 
          /**
          * Fires after rest route register
@@ -238,6 +243,124 @@ class RestRoutes {
                     array( 
                         'code'      =>  'action_parameter_required',
                         'message'   =>  'Action Parameter is required.',
+                        'status'    =>  400    
+                    ),
+                    400
+                );
+
+            }
+            
+
+            if( !$actions || !$with_this_api_key ) {
+
+                wp_send_json_error( 
+                    array( 
+                        'code'      =>  'no_action_exist',
+                        'message'   =>  'No action exist.',
+                        'status'    =>  404    
+                    ),
+                    404
+                );
+
+            }
+
+            wp_send_json_success( 
+                $actions,
+                200
+            );
+
+        }
+
+        wp_send_json_error( 
+            array( 
+                'code'      =>  'api_key_not_exists',
+                'message'   =>  'API key does not exist.',
+                'status'    =>  404    
+            ),
+            404
+        );
+
+    }
+
+    /**
+     * Does The action | Rest Route Callback
+     * 
+     * @since 1.0
+     * @version 1.0
+     */
+    public function do_action( \WP_REST_Request $request ) {
+
+        $headers = $request->get_headers();
+        $body = $request->get_params();
+        
+        if( !isset( $headers['x_api_key'][0] ) || empty( $headers['x_api_key'][0] ) ) {
+
+            wp_send_json_error( 
+                array( 
+                    'code'      =>  'api_key_required',
+                    'message'   =>  'API key required.',
+                    'status'    =>  401    
+                ),
+                401
+            );
+
+        }
+
+        $api_key = sanitize_text_field( $headers['x_api_key'][0] );
+
+        $api_key_exists = botmate_api_key_exists( $api_key );
+
+        if( $api_key_exists ) {
+
+            $actions = botmate_get_actions_by_api_key( $api_key );
+            $action = $body['action'];
+            $trigger = $body['trigger'];
+            $to_do = $body['to_do'];
+            $with_this_api_key = $action ? array_key_exists( $action, $actions ) : false;
+
+            if( isset( $action ) && $with_this_api_key ) {
+
+                $actions = botmate_get_actions_classes();
+                $action = new $actions[$action]();
+
+                $response = $action->do_action( $to_do );
+                
+                wp_send_json_success( 
+                    $response,
+                    200
+                );
+
+            } 
+            if( !isset( $action ) ) {
+
+                wp_send_json_error( 
+                    array( 
+                        'code'      =>  'action_parameter_required',
+                        'message'   =>  'Action Parameter is required.',
+                        'status'    =>  400    
+                    ),
+                    400
+                );
+
+            }
+            if( !isset( $trigger ) ) {
+
+                wp_send_json_error( 
+                    array( 
+                        'code'      =>  'trigger_parameter_required',
+                        'message'   =>  'Trigger Parameter is required.',
+                        'status'    =>  400    
+                    ),
+                    400
+                );
+
+            }
+            if( !isset( $to_do ) ) {
+
+                wp_send_json_error( 
+                    array( 
+                        'code'      =>  'to_do_parameter_required',
+                        'message'   =>  'To do Parameter is required.',
                         'status'    =>  400    
                     ),
                     400
