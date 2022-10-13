@@ -99,6 +99,7 @@ final class Init {
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-trigger.php';
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-action.php';
         require BOTMATE_DIR_PATH . 'integrations/class-bm-integrations.php';
+        require 'rest-api/Middleware/v1/class-middleware.php';
 
         require 'bm-functions.php';
 

@@ -64,6 +64,21 @@ class Database {
 
     }
 
+
+    /**
+     * Gets Option
+     *
+     * @param $option_key
+     * @return false|mixed|void
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function get_option( $option_key ) {
+
+        return get_option( $option_key );
+
+    }
+
     /**
      * Checks does API key exist
      * 

@@ -235,9 +235,42 @@ endif;
  * @version 1.0
  */
 if( !function_exists( 'botmate_get_trigger_config' ) ):
-    function botmate_get_trigger_config( $trigger_id ) {
+function botmate_get_trigger_config( $trigger_id ) {
 
-        return  \BotMate\Classes\Database::get_meta( $trigger_id, 'trigger_configuration' );
+    return  \BotMate\Classes\Database::get_meta( $trigger_id, 'trigger_configuration' );
+
+}
+endif;
+
+
+/**
+ * Gets Base URL by API Key
+ *
+ * @since 1.0
+ * @version 1.0
+ */
+if( !function_exists( 'botmate_get_base_url_by_api_key' ) ):
+function botmate_get_base_url_by_api_key( $api_key ) {
+
+    $database = new \BotMate\Classes\Database();
+
+    $option =  $database->get_sites( $api_key );
+
+    if( $option ) {
+
+        foreach ( $option as $key => $item ) {
+
+            if( isset( $item['api_key'] ) && $item['api_key'] == $api_key ) {
+
+                return $item['url'];
+
+            }
+
+        }
 
     }
+
+    return false;
+
+}
 endif;
