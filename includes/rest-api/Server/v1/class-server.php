@@ -71,8 +71,8 @@ class Server {
     /**
      * Request Header
      *
-     * @param string $api_key API Key
-     * @param array $additional_header Additional Header 
+     * @param array $additional_header Additional Header
+     * @return array
      * @since 1.0
      * @version 1.0
      */
