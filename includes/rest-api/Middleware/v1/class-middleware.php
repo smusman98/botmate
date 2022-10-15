@@ -2,6 +2,7 @@
 
 namespace BotMate\Middleware\v1;
 
+use BotMate\Classes\Logger;
 use BotMate\Server\v1\Server;
 
 /**
@@ -92,6 +93,7 @@ class Middleware {
 
         $api_key = $trigger_action_args['site'];
         $base_url = botmate_get_base_url_by_api_key( $api_key );
+        $site_title = botmate_get_site_title_by_api_key( $api_key );
         $fake_args = $trigger_action_args['selected_trigger_action'];
         $trigger = $trigger_action_args['trigger'];
 
@@ -137,9 +139,38 @@ class Middleware {
         $response = $server->request( 'POST', '/do-action' );
         $code = wp_remote_retrieve_response_code( $response );
         $response = wp_remote_retrieve_body( $response );
+        $response = serialize( $response );
+        unset( $trigger_action_args['fetched_trigger_options'] );
+        unset( $trigger_action_args['fetched_action_fields'] );
+        $session_transcript = serialize( $trigger_action_args );
+        $logger = new Logger();
 
-        var_dump( $code, $response );
-        die;
+        if( $code == 200 ) {
+
+            /**
+             * Fires After Successful Action Response From Remote
+             *
+             * @since 1.0
+             * @version 1.0
+             */
+            do_action( 'botmate_successful_remote_action' );
+
+            $logger->success_log( $site_title, $action, $trigger, $code, $response, 'success', time(), $session_transcript );
+
+        }
+        else {
+
+            /**
+             * Fires After Failed Action Response From Remote
+             *
+             * @since 1.0
+             * @version 1.0
+             */
+            do_action( 'botmate_failed_remote_action' );
+
+            $logger->failed_log( $site_title, $action, $trigger, $code, $response, 'success', time(), $session_transcript );
+
+        }
 
     }
 

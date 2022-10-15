@@ -2,6 +2,8 @@
 
 namespace BotMate;
 
+use BotMate\Classes\Database;
+
 /**
  * Main Init Class
  *
@@ -100,6 +102,7 @@ final class Init {
         require BOTMATE_DIR_PATH . 'includes/abstracts/abstract-bm-action.php';
         require BOTMATE_DIR_PATH . 'integrations/class-bm-integrations.php';
         require 'rest-api/Middleware/v1/class-middleware.php';
+        require 'classes/class-bm-logger.php';
 
         require 'bm-functions.php';
 
@@ -123,7 +126,9 @@ final class Init {
      */
     private function hooks() {
 
+        $database = new Database();
 
+        register_activation_hook( BOTMATE_PLUGIN_FILE, array( $database, 'activate_plugin' ) );
 
     }
 

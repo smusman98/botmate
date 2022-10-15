@@ -36,6 +36,39 @@ class Database {
      */
     public function create_logs_table() {
 
+        $table_exists = self::get_option( 'botmate_db_version' );
+
+        //If table not exists create one
+        if( !$table_exists ) {
+
+            global $wpdb;
+            $charset_collate = $wpdb->get_charset_collate();
+            $table_name = $wpdb->prefix . self::LOGS_TABLE;
+            $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
+              id                    INT(11) NOT NULL AUTO_INCREMENT, 
+              site_title            VARCHAR(256) NOT NULL,
+              `action`              VARCHAR(256) NOT NULL,
+              `trigger`             VARCHAR(256) NOT NULL,
+              response_code         VARCHAR(3) NOT NULL,
+              response_body         LONGTEXT NOT NULL,
+              status                VARCHAR(9) NOT NULL,
+              `time`                BIGINT(20) DEFAULT NULL,              
+              session_transcript    LONGTEXT NOT NULL,
+              PRIMARY KEY  (id)
+            ) $charset_collate;";
+
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );
+            update_option( 'botmate_db_version', BOTMATE_DB_VERSION );
+
+        }
+
+        //Update existing table if current on is older thn BOTMATE_DB_VERSION
+        if( $table_exists && version_compare( $table_exists, BOTMATE_DB_VERSION, '<' ) ) {
+
+            //Do something new :D
+
+        }
 
     }
 
@@ -173,6 +206,43 @@ class Database {
 
     }
 
+
+    /**
+     * Insert Log Entry
+     *
+     * @param $site_title
+     * @param $action
+     * @param $trigger
+     * @param $response_code
+     * @param $response_body
+     * @param $status
+     * @param $time
+     * @param $session_transcript
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript ) {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . self::LOGS_TABLE;
+
+        return $wpdb->insert(
+            $table_name,
+            array(
+                'site_title'            =>  $site_title,
+                'action'                =>  $action,
+                'trigger'               =>  $trigger,
+                'response_code'         =>  $response_code,
+                'response_body'         =>  $response_body,
+                'status'                =>  $status,
+                'time'                  =>  $time,
+                'session_transcript'    =>  $session_transcript
+            )
+        );
+
+    }
+
     /**
      * Runs on Plugin activation :)
      *
@@ -181,6 +251,15 @@ class Database {
      */
     public function activate_plugin() {
 
+        $this->create_logs_table();
+
+        /**
+         * Fires After BotMate Activation
+         *
+         * @since 1.0
+         * @version 1.0
+         */
+        do_action( 'botmate_activated' );
 
     }
 
@@ -197,7 +276,7 @@ class Database {
 
 
     /**
-     * Runs on Plugin uninstall :(
+     * Runs on Plugin uninstall ;'(
      *
      * @since 1.0
      * @version 1.0
