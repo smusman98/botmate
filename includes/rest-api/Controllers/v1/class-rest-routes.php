@@ -2,6 +2,8 @@
 
 namespace BotMate\Controllers\v1;
 
+use BotMate\Classes\Logger;
+
 /**
  * RestRoutes Class
  *
@@ -292,6 +294,7 @@ class RestRoutes {
 
         $headers = $request->get_headers();
         $body = $request->get_params();
+        $logger = new Logger;
         
         if( !isset( $headers['x_api_key'][0] ) || empty( $headers['x_api_key'][0] ) ) {
 
@@ -316,14 +319,25 @@ class RestRoutes {
             $action = $body['action'];
             $trigger = $body['trigger'];
             $to_do = $body['to_do'];
+            $session_transcript = serialize( $to_do );
             $with_this_api_key = $action ? array_key_exists( $action, $actions ) : false;
 
             if( isset( $action ) && $with_this_api_key ) {
 
                 $actions = botmate_get_actions_classes();
                 $action = new $actions[$action]();
-
                 $response = $action->do_action( $to_do );
+
+
+                /**
+                 * Fites After a Successful Action by Trigger
+                 * 
+                 * @since 1.0
+                 * @version 1.0
+                 */
+                do_action( 'botmate_sucessful_action_by_trigger' );
+
+                $logger->success_log( $headers['host'][0], $body['action'], $trigger, 200, $response, 'success', time(), $session_transcript, 'incoming' );
                 
                 wp_send_json_success( 
                     $response,
