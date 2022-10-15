@@ -155,7 +155,7 @@ class Middleware {
              */
             do_action( 'botmate_successful_remote_action' );
 
-            $logger->success_log( $site_title, $action, $trigger, $code, $response, 'success', time(), $session_transcript );
+            $logger->success_log( $site_title, $action, $trigger, $code, $response, 'success', time(), $session_transcript, 'outgoing' );
 
         }
         else {
@@ -168,7 +168,7 @@ class Middleware {
              */
             do_action( 'botmate_failed_remote_action' );
 
-            $logger->failed_log( $site_title, $action, $trigger, $code, $response, 'success', time(), $session_transcript );
+            $logger->failed_log( $site_title, $action, $trigger, $code, $response, 'failed', time(), $session_transcript, 'outgoing' );
 
         }
 

@@ -54,6 +54,7 @@ class Database {
               status                VARCHAR(9) NOT NULL,
               `time`                BIGINT(20) DEFAULT NULL,              
               session_transcript    LONGTEXT NOT NULL,
+              transaction_type      VARCHAR(9) NOT NULL,
               PRIMARY KEY  (id)
             ) $charset_collate;";
 
@@ -218,11 +219,12 @@ class Database {
      * @param $status
      * @param $time
      * @param $session_transcript
+     * @param $transaction_type
      * @return void
      * @since 1.0
      * @version 1.0
      */
-    public static function insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript ) {
+    public static function insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
         global $wpdb;
         $table_name = $wpdb->prefix . self::LOGS_TABLE;
@@ -237,7 +239,8 @@ class Database {
                 'response_body'         =>  $response_body,
                 'status'                =>  $status,
                 'time'                  =>  $time,
-                'session_transcript'    =>  $session_transcript
+                'session_transcript'    =>  $session_transcript,
+                'transaction_type'      =>  $transaction_type
             )
         );
 

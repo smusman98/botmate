@@ -15,13 +15,14 @@ class Logger {
      * @param $status
      * @param $time
      * @param $session_transcript
+     * @param $transaction_type
      * @return void
      * @since 1.0
      * @version 1.0
      */
-    public function success_log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript ) {
+    public function success_log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
-        return  $this->log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript );
+        return  $this->log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type );
 
     }
 
@@ -41,9 +42,9 @@ class Logger {
      * @since 1.0
      * @version 1.0
      */
-    public function failed_log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript ) {
+    public function failed_log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
-       return  $this->log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript );
+       return  $this->log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type );
 
     }
 
@@ -59,13 +60,14 @@ class Logger {
      * @param $status
      * @param $time
      * @param $session_transcript
+     * @param $transaction_type
      * @return void
      * @since 1.0
      * @version 1.0
      */
-    public function log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript ) {
+    public function log( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
-        return Database::insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript );
+        return Database::insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type );
 
     }
 
