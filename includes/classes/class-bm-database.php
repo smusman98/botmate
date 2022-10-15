@@ -46,14 +46,14 @@ class Database {
             $table_name = $wpdb->prefix . self::LOGS_TABLE;
             $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
               id                    INT(11) NOT NULL AUTO_INCREMENT, 
-              site_title            VARCHAR(256) NOT NULL,
-              `action`              VARCHAR(256) NOT NULL,
-              `trigger`             VARCHAR(256) NOT NULL,
-              response_code         VARCHAR(3) NOT NULL,
-              response_body         LONGTEXT NOT NULL,
-              status                VARCHAR(9) NOT NULL,
+              site                  VARCHAR(256) NOT NULL,
+              `action`              VARCHAR(256),
+              `trigger`             VARCHAR(256),
+              response_code         VARCHAR(3),
+              response_body         LONGTEXT,
+              status                VARCHAR(9),
               `time`                BIGINT(20) DEFAULT NULL,              
-              session_transcript    LONGTEXT NOT NULL,
+              session_transcript    LONGTEXT,
               transaction_type      VARCHAR(9) NOT NULL,
               PRIMARY KEY  (id)
             ) $charset_collate;";
