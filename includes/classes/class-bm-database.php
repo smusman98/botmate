@@ -211,7 +211,7 @@ class Database {
     /**
      * Insert Log Entry
      *
-     * @param $site_title
+     * @param $site
      * @param $action
      * @param $trigger
      * @param $response_code
@@ -224,7 +224,7 @@ class Database {
      * @since 1.0
      * @version 1.0
      */
-    public static function insert_log_entry( $site_title, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
+    public static function insert_log_entry( $site, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
         global $wpdb;
         $table_name = $wpdb->prefix . self::LOGS_TABLE;
@@ -232,7 +232,7 @@ class Database {
         return $wpdb->insert(
             $table_name,
             array(
-                'site_title'            =>  $site_title,
+                'site'                  =>  $site,
                 'action'                =>  $action,
                 'trigger'               =>  $trigger,
                 'response_code'         =>  $response_code,
