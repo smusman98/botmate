@@ -5,6 +5,6 @@
         <sup>v<?php echo esc_attr( BOTMATE_VERSION )?></sup>
     </div>
     <div class="bm-working">
-        <img src="<?php echo esc_attr( BOTMATE_PLUGIN_URL . '/assets/images/botmate-working.jpg' )?>" width="100%" />
+        <img src="<?php echo esc_attr( BOTMATE_PLUGIN_URL . '/assets/images/botmate-working.png' )?>" width="100%" />
     </div>
 </div>

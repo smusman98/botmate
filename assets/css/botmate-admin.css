@@ -72,10 +72,14 @@
 /*Global Styling Ends*/
 
 /*Dashboard Page Starts*/
-.bm-logo {
+.bm-logo b {
     font-size: 40px;
 }
 
+.bm-logo sup {
+    font-size: 12px;
+    font-weight: bold;
+}
 .bm-working {
     margin: 50px 0;
     border: 1px solid;
