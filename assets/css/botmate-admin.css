@@ -1,7 +1,16 @@
 /*Global Styling Starts*/
 .botmate input {
-    padding: 0px 15px;
+    padding: 2px 6px;
     border-color: #cbcbcb;
+    width: 200px;
+}
+
+.botmate input[type=checkbox],
+.botmate input[type=radio],
+.botmate input[type=submit]{
+    /* padding: inherit; */
+    border-color: initial;
+    width: auto;
 }
 
 .botmate span.select2-selection {
@@ -9,18 +18,20 @@
     border-color: #cbcbcb;
 }
 
+.botmate .select2-container {
+    width: 200px!important;
+}
+
 .botmate .button.button-primary {
     background: #f56c6c;
+    vertical-align: middle;
     border-color: #f56c6c;
 }
 
 .botmate .button.button-secondary {
     border-color: #ff1a00;
+    vertical-align: middle;
     color: red;
-}
-
-.botmate .button {
-    line-height: 20px;
 }
 
 .botmate label {
@@ -47,7 +58,7 @@
     margin-top: -4px;
     display: none;
 }
-  
+
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -60,6 +71,17 @@
 
 /*Global Styling Ends*/
 
+/*Dashboard Page Starts*/
+.bm-logo {
+    font-size: 40px;
+}
+
+.bm-working {
+    margin: 50px 0;
+    border: 1px solid;
+}
+/*Dashboard Page Ends*/
+
 .bm-site-configuration {
     border: 1px solid #0fb779;
     margin: 10px 0;
@@ -69,3 +91,22 @@
 .bm-trigger-row label {
     text-transform: capitalize;
 }
+
+.bm-trigger-config td {
+    width: 30%;
+}
+
+/*Logs Page Starts*/
+.botmate .column-session_transcript {
+    text-align: center;
+}
+
+.botmate .column-transaction_type {
+    text-transform: capitalize;
+}
+
+.botmate .column-transaction_type .bm-request-icon {
+    font-size: 13px;
+    vertical-align: -webkit-baseline-middle;
+}
+/*Logs Page Ends*/

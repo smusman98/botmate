@@ -95,6 +95,7 @@ final class Init {
         require 'admin/menu-actions.php';
         require 'admin/menu-triggers.php';
         require 'admin/menu-connections.php';
+        require 'admin/menu-logs.php';
         require 'classes/class-bm-database.php';
         require 'rest-api/Controllers/v1/class-rest-routes.php';
         require 'rest-api/Server/v1/class-server.php';

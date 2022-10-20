@@ -71,4 +71,33 @@ class Logger {
 
     }
 
+    /**
+     * Get All Logs
+     *
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public function get_all() {
+
+        return Database::get_logs();
+
+    }
+
+
+    /**
+     * Delete Log By (id, etc...)
+     *
+     * @param $column
+     * @param $value
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public function delete_log_by( $column, $value ) {
+
+        Database::delete_log_by( $column, $value );
+
+    }
+
 }

@@ -207,19 +207,29 @@ class MenuTrigger {
         $fetched_action_fields = !empty( $_POST['fetched_action_fields'] ) ? sanitize_text_field( stripslashes( $_POST['fetched_action_fields'] ) ) : '';
         $fetched_action_fields = json_decode( $fetched_action_fields );
 
-        //Remove Dollars
-        foreach ( $fetched_trigger_options as $key => $value ) {
+        //If already saved
+        if( !empty( $fetched_trigger_options ) ) {
 
-            $new_key = str_replace( '$', '', $key );
-            $data['fetched_trigger_options'][$new_key] =  $value;
+            //Remove Dollars
+            foreach ( $fetched_trigger_options as $key => $value ) {
+
+                $new_key = str_replace( '$', '', $key );
+                $data['fetched_trigger_options'][$new_key] =  $value;
+
+            }
 
         }
 
-        //Remove Dollars
-        foreach ( $fetched_action_fields as $key => $value ) {
+        //If already saved
+        if( !empty( $fetched_action_fields ) ) {
 
-            $new_key = str_replace( '$', '', $key );
-            $data['fetched_action_fields'][$new_key] =  $value;
+            //Remove Dollars
+            foreach ( $fetched_action_fields as $key => $value ) {
+
+                $new_key = str_replace( '$', '', $key );
+                $data['fetched_action_fields'][$new_key] =  $value;
+
+            }
 
         }
 

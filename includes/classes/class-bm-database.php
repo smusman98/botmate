@@ -247,6 +247,74 @@ class Database {
     }
 
     /**
+     * Get Logs
+     *
+     * @param array $args
+     * @param string $condition
+     * @return array|object|\stdClass[]|null
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function get_logs( $args = array(), $condition = '' ) {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . self::LOGS_TABLE;
+        $query = "SELECT * FROM {$table_name}";
+
+        if( !empty( $args ) ) {
+
+            $query .= ' WHERE';
+            $counter = 0;
+
+            foreach( $args as $column => $value ) {
+
+                $query .= $wpdb->prepare(
+                    " `{$column}` = %s ",
+                    $value
+                );
+
+                $counter++;
+
+                if( !empty( $condition ) && count( $args ) > 1 && $counter !== count( $args ) ) {
+
+                    $query .= $condition;
+
+                }
+
+            }
+
+        }
+
+        return $wpdb->get_results(
+            $query
+        );
+
+    }
+
+    /**
+     * Delete Log By (id, etc...)
+     *
+     * @param $column
+     * @param $value
+     * @return void
+     * @since 1.0
+     * @version 1.0
+     */
+    public static function delete_log_by( $column, $value ) {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . self::LOGS_TABLE;
+
+        return $wpdb->delete(
+            $table_name,
+            array(
+                $column =>  $value
+            )
+        );
+
+    }
+
+    /**
      * Runs on Plugin activation :)
      *
      * @since 1.0

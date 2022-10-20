@@ -34,7 +34,25 @@ class AdminPage {
      */
     private function hooks() {
 
+        if ( isset( $_GET['page'] ) && $_GET['page'] == 'botmate' ) {
+
+            add_action( 'botmate_admin_register_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
+        }
+
         add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+
+    }
+
+    /**
+     * Admin enqueue scripts | Action call-back
+     *
+     * @since 1.0
+     * @version 1.0
+     */
+    public function admin_enqueue_scripts() {
+
+        Scripts::admin_enqueue_all();
 
     }
 
@@ -47,12 +65,14 @@ class AdminPage {
      */
     public function add_menu_page() {
 
+        $menu_logs = new MenuLogs;
+
         add_menu_page(
             __( 'BotMate', 'botmate' ),
             __( 'BotMate', 'botmate' ),
             Init::CAPABILITY,
             Init::SLUG,
-            array( AdminPage::class, 'botmate' ),
+            array( $this, 'botmate' ),
             'dashicons-rest-api'
         );
 
@@ -92,9 +112,10 @@ class AdminPage {
             __( 'Logs', 'botmate' ),
             Init::CAPABILITY,
             Init::SLUG . '-logs',
-            array( AdminPage::class, 'logs' ),
+            array( $menu_logs, 'page' ),
             4
         );
+
 
         /**
          * Fires when menu is loaded
@@ -115,24 +136,8 @@ class AdminPage {
      * @version 1.0
      */
     public function botmate() {
-        //Todo: docs, videos, add-ons, AutomatorWP
-        ?>
-        <h1>Botmate</h1>
-        <?php
 
-    }
-
-
-    /**
-     * call-back | Logs
-     *
-     * @since 1.0
-     * @version 1.0
-     */
-    public function logs() {
-        ?>
-        <h1>Logs</h1>
-        <?php
+        require 'admin/views/html-dashboard.php';
 
     }
 

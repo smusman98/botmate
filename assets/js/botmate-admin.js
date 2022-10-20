@@ -192,4 +192,13 @@ jQuery( document ).ready( function () {
         placeholder: "Select Site to get Actions"
     });
 
+    /*Logs Page Starts*/
+    jQuery( document ).on( 'click', '.bm-session-transcript', function (){
+
+        var data = jQuery( this ).data( 'data' );
+        jQuery( this ).siblings( '.bm-show-session-transcript' ).text( data );
+
+    } );
+    /*Logs Page Ends*/
+
 } );

@@ -27,8 +27,8 @@ $fetched_action_fields = ( $trigger_config && isset( $trigger_config['fetched_ac
             <table cellpadding="10">
                 <tr class="bm-trigger-row">
                     <td>
-                        <label for="">Select Trigger</label>
-                        <select class="bm-triggers-select" style="width: 100%;" name="bm_trigger">
+                        <div><label for="">Select Trigger</label></div>
+                        <select class="bm-triggers-select" name="bm_trigger">
                             <option value="">Select Trigger</option>
                             <?php
 
@@ -46,8 +46,8 @@ $fetched_action_fields = ( $trigger_config && isset( $trigger_config['fetched_ac
                         <div><sup>When trigger happen on current site.</sup></div>
                     </td>
                     <td>
-                        <label for="">Select Site</label>
-                        <select class="bm-triggers-site-select" style="width: 100%;" name="bm_triggers_site">
+                       <div><label for="">Select Site</label></div>
+                        <select class="bm-triggers-site-select" name="bm_triggers_site">
                             <option value="">Select Site</option>
                             <?php
                             if( $sites ) {
@@ -65,8 +65,8 @@ $fetched_action_fields = ( $trigger_config && isset( $trigger_config['fetched_ac
                         <div><sup>Where Action should happen.</sup></div>
                     </td>
                     <td>
-                        <label for="">Select Action</label>
-                        <select class="bm-triggers-action-select" style="width: 100%;" name="bm_triggers_action"></select>
+                        <div><label for="">Select Action</label></div>
+                        <select class="bm-triggers-action-select" name="bm_triggers_action"></select>
                         <div><sup>What should happen to the selected site.</sup></div>
                     </td>
                 </tr>
