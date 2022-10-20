@@ -156,7 +156,7 @@ jQuery( document ).ready( function () {
 
                     jQuery( lastRow ).append(
                         `<td>
-                            <label for="">${label}</label>
+                            <div><label for="">${label}</label></div>
                             <select class="bm-action-field ${name}" style="width: 100%;" name="bm_trigger_action[${name}]">
                                 ${bmTriggerFields}
                             </select>
