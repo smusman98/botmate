@@ -112,7 +112,7 @@ $fetched_action_fields = ( $trigger_config && isset( $trigger_config['fetched_ac
                             }
                             ?>
                                 <td>
-                                    <label for=""><?php echo esc_html( $label ); ?></label>
+                                    <div><label for=""><?php echo esc_html( $label ); ?></label></div>
                                     <select class="bm-action-field <?php echo esc_attr( $key ); ?>" style="width: 100%;" name="bm_trigger_action[<?php echo esc_attr( $key ); ?>]">
                                         <option value="">Select Trigger Field</option>
                                         <?php
