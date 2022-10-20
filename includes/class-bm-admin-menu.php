@@ -73,7 +73,7 @@ class AdminPage {
             Init::CAPABILITY,
             Init::SLUG,
             array( $this, 'botmate' ),
-            'dashicons-rest-api'
+            BOTMATE_PLUGIN_URL . '/assets/images/menu-icon.png'
         );
 
         add_submenu_page(
