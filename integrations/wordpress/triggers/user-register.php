@@ -52,6 +52,15 @@ class User_Register extends Trigger {
 
     }
 
+
+    /**
+     * Calls The Action | Action call-back
+     * 
+     * @param string $user_id
+     * @param string $userdata
+     * @since 1.0
+     * @version 1.0
+     */
     public function call_action( $user_id, $userdata ) {
 
         $args = array();
