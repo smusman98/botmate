@@ -93,9 +93,12 @@ class MenuConnection {
      */
     public function save_sites() {
 
-        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        $nonce = isset( $_POST['_nonce'] ) ? $_POST['_nonce'] : '';
 
-        $sites = sanitize_text_field( $_POST['sites'] );
+        wp_verify_nonce( $nonce, 'bm-security' );
+        
+        $sites = isset( $_POST['sites'] ) ? $_POST['sites'] : '';
+        $sites = sanitize_text_field( $sites );
         $sites = stripslashes( $sites );
         $sites = json_decode( $sites, true );
 
@@ -120,7 +123,9 @@ class MenuConnection {
      */
     public function test_connection() {
 
-        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        $nonce = isset( $_POST['_nonce'] ) ? $_POST['_nonce'] : '';
+
+        wp_verify_nonce( $nonce, 'bm-security' );
 
         $site_url = isset( $_POST['site_url'] ) ? sanitize_url( $_POST['site_url'] ) : '';
         $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';

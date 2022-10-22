@@ -117,7 +117,9 @@ class MenuTrigger {
      */
     public function get_actions() {
 
-        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        $nonce = isset( $_POST['_nonce'] ) ? $_POST['_nonce'] : '';
+
+        wp_verify_nonce( $nonce, 'bm-security' );
 
         $base_url = isset( $_POST['base_url'] ) ? sanitize_url( $_POST['base_url'] ) : '';
         $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';
@@ -159,7 +161,9 @@ class MenuTrigger {
      */
     public function get_action_fields() {
 
-        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        $nonce = isset( $_POST['_nonce'] ) ? $_POST['_nonce'] : '';
+
+        wp_verify_nonce( $nonce, 'bm-security' );
 
         $base_url = isset( $_POST['base_url'] ) ? sanitize_url( $_POST['base_url'] ) : '';
         $api_key = isset( $_POST['api_key'] ) ? sanitize_text_field( $_POST['api_key'] ) : '';

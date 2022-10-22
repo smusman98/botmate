@@ -122,7 +122,9 @@ class MenuAction {
             );
         }
         
-        wp_verify_nonce( $_POST['_nonce'], 'bm-security' );
+        $nonce = isset( $_POST['_nonce'] ) ? $_POST['_nonce'] : '';
+
+        wp_verify_nonce( $nonce, 'bm-security' );
         
         $api_key = wp_generate_password( 20, true, false );
 
