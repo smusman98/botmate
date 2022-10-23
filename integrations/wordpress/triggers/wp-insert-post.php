@@ -66,6 +66,7 @@ class WP_Insert_Post extends Trigger {
 
         $args = array();
         $args['post_id'] = $post_ID;
+        $post = (array)$post;
 
         $args = array_merge( $args, $post );
 
