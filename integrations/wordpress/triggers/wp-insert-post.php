@@ -114,7 +114,7 @@ class WP_Insert_Post extends Trigger {
             '$post_category'            =>  'Array of category IDs. Defaults to value of the \'default_category\' option.',
             '$tags_input'               =>  'Array of tag names, slugs, or IDs. Default empty.',
             '$tax_input'                =>  'An array of taxonomy terms keyed by their taxonomy name. If the taxonomy is hierarchical, the term list needs to be either an array of term IDs or a comma-separated string of IDs. If the taxonomy is non-hierarchical, the term list can be an array that contains term names or slugs, or a comma-separated string of names or slugs. This is because, in hierarchical taxonomy, child terms can have the same names with different parent terms, so the only way to connect them is using ID. Default empty.',
-            'meta_input'                =>  'Array of post meta values keyed by their post meta key. Default empty.'
+            '$meta_input'                =>  'Array of post meta values keyed by their post meta key. Default empty.'
         );
 
     }

@@ -89,7 +89,8 @@ class Integrations {
     public function botmate_register_actions( $actions ) {
 
         $new_actions = array(
-            'wp_insert_user'  =>  'BotMate\Integrations\WordPress\Actions\WP_Insert_User'
+            'wp_insert_user'  =>  'BotMate\Integrations\WordPress\Actions\WP_Insert_User',
+            'wp_insert_post'  =>  'BotMate\Integrations\WordPress\Actions\WP_Insert_Post'
         );
 
         $actions = array_merge( $new_actions, $actions );

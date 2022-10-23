@@ -21,6 +21,7 @@ class WordPress {
         require_once 'triggers/user-register.php';
         require_once 'triggers/wp-insert-post.php';
         require_once 'actions/wp-insert-user.php';
+        require_once 'actions/wp-insert-post.php';
 
     }
 
