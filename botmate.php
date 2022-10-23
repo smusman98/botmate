@@ -1,13 +1,12 @@
 <?php
 /**
  * Plugin Name: BotMate
- * Plugin URI: https://botmate.com/
+ * Plugin URI: https://botmate.me
  * Description: Allows you to connect your sites together, and Automate/ Sync workflows with no code.
  * Version: 1.0
- * Author: CoderPress
- * Author URI: https://coderpress.io
+ * Author: BotMate
+ * Author URI: https://botmate.me/
  * Text Domain: botmate
- * Domain Path: /i18n/languages/
  * Requires at least: 5.8
  * Requires PHP: 7.2
  *
