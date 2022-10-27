@@ -2,7 +2,7 @@
 
 $logs = new \BotMate\MenuLogs();
 $logs->prepare_items();
-$page = isset( $_REQUEST['page'] ) ? $_REQUEST['page'] : '';
+$page = isset( $_REQUEST['page'] ) ? sanitize_text_field( $_REQUEST['page'] ) : '';
 ?>
 <div class="botmate wrap">
     <h1>Logs</h1>

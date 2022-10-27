@@ -97,8 +97,7 @@ class MenuConnection {
 
         wp_verify_nonce( $nonce, 'bm-security' );
         
-        $sites = isset( $_POST['sites'] ) ? $_POST['sites'] : '';
-        $sites = sanitize_text_field( $sites );
+        $sites = isset( $_POST['sites'] ) ? sanitize_text_field( $_POST['sites'] ) : '';
         $sites = stripslashes( $sites );
         $sites = json_decode( $sites, true );
 

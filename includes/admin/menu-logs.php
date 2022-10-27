@@ -302,10 +302,10 @@ class MenuLogs extends \WP_List_Table {
     protected function usort_reorder( $a, $b ) {
 
         // If no sort, default to title.
-        $orderby = !empty( $_REQUEST['orderby'] ) ? wp_unslash( $_REQUEST['orderby'] ) : 'site'; // WPCS: Input var ok.
+        $orderby = !empty( $_REQUEST['orderby'] ) ? wp_unslash( sanitize_text_field( $_REQUEST['orderby'] ) ) : 'site'; // WPCS: Input var ok.
 
         // If no order, default to asc.
-        $order = !empty( $_REQUEST['order'] ) ? wp_unslash( $_REQUEST['order'] ) : 'asc'; // WPCS: Input var ok.
+        $order = !empty( $_REQUEST['order'] ) ? wp_unslash( sanitize_text_field( $_REQUEST['order'] ) ) : 'asc'; // WPCS: Input var ok.
 
         // Determine sort order.
         $result = strcmp( $a->$orderby, $b->$orderby );
