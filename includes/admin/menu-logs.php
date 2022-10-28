@@ -176,7 +176,7 @@ class MenuLogs extends \WP_List_Table {
      */
     protected function column_title( $item ) {
 
-        $page = isset( $_REQUEST['page'] ) ? $_REQUEST['page'] : '';
+        $page = isset( $_REQUEST['page'] ) ? sanitize_text_field( $_REQUEST['page'] ) : '';
         $page = wp_unslash( $page ); // WPCS: Input var ok.
 
         // Build delete row action.
