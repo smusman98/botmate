@@ -10,8 +10,9 @@ class MenuTrigger {
     /**
      * MenuAction constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -28,8 +29,9 @@ class MenuTrigger {
     /**
      * Admin enqueue scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -47,8 +49,9 @@ class MenuTrigger {
     /**
      * Registers Custom Post Type | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function register_trigger_post() {
 
@@ -81,8 +84,9 @@ class MenuTrigger {
     /**
      * Adds Metabox | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function register_trigger_config_metabox() {
 
@@ -99,8 +103,9 @@ class MenuTrigger {
     /**
      * Renders Trigger configuration HTML
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function trigger_configuration() {
 
@@ -112,8 +117,9 @@ class MenuTrigger {
      * Get Actions | AJAX
      *
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function get_actions() {
 
@@ -142,8 +148,9 @@ class MenuTrigger {
      *
      * @param $fields
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function render_action_fileds( $fields ) {
 
@@ -156,8 +163,9 @@ class MenuTrigger {
      * Get Action Fields | AJAX
      *
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function get_action_fields() {
 
@@ -197,8 +205,9 @@ class MenuTrigger {
     /**
      * Save the Triggers | Action Callback
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function save_trigger( $post_id ) {
 

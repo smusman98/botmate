@@ -7,8 +7,9 @@ class Integrations {
     /**
      * Integrations constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -22,8 +23,9 @@ class Integrations {
     /**
      * Include files
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function includes() {
 
@@ -35,8 +37,9 @@ class Integrations {
     /**
      * Define constants
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function define() {
 
@@ -47,8 +50,9 @@ class Integrations {
     /**
      * Action, Filters
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function hooks() {
 
@@ -62,8 +66,9 @@ class Integrations {
      *
      * @param $triggers
      * @return string[]
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function botmate_register_triggers( $triggers ) {
 
@@ -83,8 +88,9 @@ class Integrations {
      *
      * @param $actions
      * @return string[]
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function botmate_register_actions( $actions ) {
 

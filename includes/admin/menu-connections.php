@@ -21,8 +21,9 @@ class MenuConnection {
     /**
      * MenuConnection constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -42,8 +43,9 @@ class MenuConnection {
     /**
      * Adds sub-menu | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function add_submenu() {
 
@@ -62,8 +64,9 @@ class MenuConnection {
     /**
      * Admin enqueue scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -76,8 +79,9 @@ class MenuConnection {
     /**
      * Html page
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function page() {
 
@@ -88,8 +92,9 @@ class MenuConnection {
     /**
      * Adds Site | AJAX
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function save_sites() {
 
@@ -106,7 +111,7 @@ class MenuConnection {
          *
          * @param array $sites
          *
-         * @since 1.0
+         * @since 1.0.0
          */
         $sites = apply_filters( 'botmate_save_sites', $sites );
 
@@ -117,8 +122,9 @@ class MenuConnection {
     /**
      * Tests Site Connection | AJAX
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function test_connection() {
 

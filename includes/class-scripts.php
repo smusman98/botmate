@@ -7,8 +7,9 @@ class Scripts {
     /**
      * Scripts constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -19,8 +20,9 @@ class Scripts {
     /**
      * Admin register scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -42,7 +44,7 @@ class Scripts {
         /**
          * Fires after registering scripts
          *
-         * @since 1.0
+         * @since 1.0.0
          */
         do_action( 'botmate_admin_register_scripts' );
 
@@ -51,8 +53,9 @@ class Scripts {
     /**
      * Enqueue all Scripts
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function admin_enqueue_all() {
 

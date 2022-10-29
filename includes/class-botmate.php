@@ -8,15 +8,16 @@ use BotMate\Classes\Database;
  * Main Init Class
  *
  * @package BotMate
- * @since 1.0
+ * @since 1.0.0
  */
 final class Init {
 
     /**
      * Holds the instance of current class
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      * @var null
      */
     private static $_instance;
@@ -25,8 +26,9 @@ final class Init {
      * Version of plugin
      * @var string
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $version = BOTMATE_VERSION;
 
@@ -38,8 +40,9 @@ final class Init {
     /**
      * Returns the instance of current class
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      * @return BotMate|null
      */
     public static function get_instance() {
@@ -55,8 +58,9 @@ final class Init {
     /**
      * Init constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -71,8 +75,9 @@ final class Init {
      *
      * @param string $name Constant name
      * @param string|Bool $value Constant value
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private function define( $name, $value ) {
 
@@ -85,8 +90,9 @@ final class Init {
     /**
      * Define constants
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private function includes() {
 
@@ -112,8 +118,9 @@ final class Init {
     /**
      * Define constants
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private function define_constants() {
 
@@ -122,8 +129,9 @@ final class Init {
     /**
      * Action|Filters
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private function hooks() {
 

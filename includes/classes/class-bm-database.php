@@ -12,8 +12,9 @@ class Database {
     /**
      * Database constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -31,8 +32,9 @@ class Database {
     /**
      * Creates log table
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function create_logs_table() {
 
@@ -77,8 +79,9 @@ class Database {
      * Save sites
      *
      * @param array $sites Sites
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function save_sites( $sites ) {
 
@@ -89,8 +92,9 @@ class Database {
     /**
      * Get Sites
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function get_sites() {
 
@@ -104,8 +108,9 @@ class Database {
      *
      * @param $option_key
      * @return false|mixed|void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function get_option( $option_key ) {
 
@@ -117,8 +122,9 @@ class Database {
      * Checks does API key exist
      * 
      * @param string $api_key API key
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function api_key_exists( $api_key ) {
 
@@ -145,8 +151,9 @@ class Database {
      * @param $trigger_id
      * @param $key
      * @return mixed
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function get_meta( $trigger_id, $key ) {
 
@@ -161,8 +168,9 @@ class Database {
      * @param $key
      * @param $value
      * @return mixed
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function update_meta( $post_id, $key, $value ) {
 
@@ -174,8 +182,9 @@ class Database {
      * Get actions by API Key
      * 
      * @param $api_key
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function get_actions_by_api_key( $api_key ) {
 
@@ -221,8 +230,9 @@ class Database {
      * @param $session_transcript
      * @param $transaction_type
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function insert_log_entry( $site, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
@@ -252,8 +262,9 @@ class Database {
      * @param array $args
      * @param string $condition
      * @return array|object|\stdClass[]|null
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function get_logs( $args = array(), $condition = '' ) {
 
@@ -297,8 +308,9 @@ class Database {
      * @param $column
      * @param $value
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public static function delete_log_by( $column, $value ) {
 
@@ -317,8 +329,9 @@ class Database {
     /**
      * Runs on Plugin activation :)
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function activate_plugin() {
 
@@ -337,8 +350,9 @@ class Database {
     /**
      * Runs on Plugin deactivate :(
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function deactivate_plugin() {
 
@@ -349,8 +363,9 @@ class Database {
     /**
      * Runs on Plugin uninstall ;'(
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function uninstall_plugin() {
 

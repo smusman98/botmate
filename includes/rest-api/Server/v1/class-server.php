@@ -16,40 +16,45 @@ class Server {
     /**
      * Namespace of routes
      * 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $namespace = 'botmate/v1';
 
     /**
      * Base URL
      * 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $base_url = '';
 
     /**
      * API Key
      * 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $api_key = '';
 
     /**
      * Request Header
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $header = array();
 
     /**
      * Request Body
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private $body = array();
 
@@ -58,8 +63,9 @@ class Server {
      *
      * @param string $base_url Base URL
      * @param string $api_key API Key
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct( $base_url, $api_key ) {
 
@@ -73,8 +79,9 @@ class Server {
      *
      * @param array $additional_header Additional Header
      * @return array
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function header( $additional_header = array() ) {
 
@@ -88,8 +95,9 @@ class Server {
      * Request Body
      *
      * @param array $body Body args
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function body( $body = array() ) {
 

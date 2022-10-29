@@ -16,8 +16,9 @@ class Middleware {
     /**
      * Middleware Constructor
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -31,8 +32,9 @@ class Middleware {
      * Automate the Flow
      *
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function automate() {
 
@@ -86,8 +88,9 @@ class Middleware {
      * @param $trigger_action_args
      * @param $args
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function remote_action( $action, $trigger_action_args, $args ) {
 

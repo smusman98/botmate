@@ -4,8 +4,8 @@
  * Get list of registered triggers
  *
  * @return mixed|void
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_triggers_classes' ) ):
     function botmate_get_triggers_classes() {
@@ -15,7 +15,7 @@ if( !function_exists( 'botmate_get_triggers_classes' ) ):
      *
      * @param array array() Trigger(s)
      *
-     * @since 1.0
+     * @since 1.0.0
      */
     $classes = apply_filters( 'botmate_register_trigger', array() );
 
@@ -28,8 +28,8 @@ endif;
  * Get list of registered actions
  *
  * @return mixed|void
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_actions_classes' ) ):
     function botmate_get_actions_classes() {
@@ -39,7 +39,7 @@ if( !function_exists( 'botmate_get_actions_classes' ) ):
          *
          * @param array array() Actions(s)
          *
-         * @since 1.0
+         * @since 1.0.0
          */
         $classes = apply_filters( 'botmate_register_action', array() );
 
@@ -52,8 +52,8 @@ endif;
  * Adds Site
  * 
  * @param array $site Site
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_save_sites' ) ):
 function botmate_save_sites( $sites ) {
@@ -69,8 +69,8 @@ endif;
  * Get Sites
  *
  * @param array $site Site
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_sites' ) ):
     function botmate_get_sites() {
@@ -85,8 +85,8 @@ endif;
 /**
  * Sanitizes Array | Associative  Array | Multi-dimensional Array
  *
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_sanitize_array' ) ):
 function botmate_sanitize_array( $_array ) {
@@ -113,8 +113,8 @@ endif;
  * Checks does API key exist
  * 
  * @param string $api_key API key
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_api_key_exists' ) ):
 function botmate_api_key_exists( $api_key ) {
@@ -129,8 +129,8 @@ endif;
  *
  * @param $action_id
  * @return mixed
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_saved_actions' ) ):
     function botmate_get_saved_actions( $action_id ) {
@@ -145,8 +145,8 @@ endif;
  *
  * @param $trigger_id
  * @return mixed
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_saved_triggers' ) ):
     function botmate_get_saved_triggers( $trigger_id ) {
@@ -161,8 +161,8 @@ endif;
  *
  * @param $trigger_id
  * @return mixed
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_api_key' ) ):
 function botmate_get_api_key( $trigger_id ) {
@@ -176,8 +176,8 @@ endif;
  * Get actions by API Key
  * 
  * @param $api_key
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_get_actions_by_api_key' ) ):
 function botmate_get_actions_by_api_key( $api_key ) {
@@ -192,8 +192,8 @@ endif;
  * 
  * @param $action_unique_id
  * @param $method
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_call_action_method' ) ):
 function botmate_call_action_method( $action_unique_id, $method ) {
@@ -212,8 +212,8 @@ endif;
  *
  * @param $trigger_unique_id
  * @param $method
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 if( !function_exists( 'botmate_call_trigger_method' ) ):
 function botmate_call_trigger_method( $trigger_unique_id, $method ) {

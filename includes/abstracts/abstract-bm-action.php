@@ -9,8 +9,9 @@ abstract class Action {
      *
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $id = false;
 
@@ -20,8 +21,9 @@ abstract class Action {
      *
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $title = false;
 
@@ -30,8 +32,9 @@ abstract class Action {
      * Logo url of the Integration
      *
      * @var string
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $logo = false;
 
@@ -39,8 +42,9 @@ abstract class Action {
      * Description of the Integration
      *
      * @var string
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $description = false;
 
@@ -50,8 +54,9 @@ abstract class Action {
      *
      *
      * @param array $args
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct( $args = array() ) {
 
@@ -70,8 +75,9 @@ abstract class Action {
     /**
      * Gets the fields for the setup
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function test_fields() {
 
@@ -84,8 +90,9 @@ abstract class Action {
      * Does this action
      * 
      * @param Array $args Arguments 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     abstract public function do_action( $args );
 
@@ -101,8 +108,9 @@ abstract class Action {
      *      ) 
      * )
      * @return array 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     abstract public function fields();
 

@@ -16,8 +16,9 @@ class MenuLogs extends \WP_List_Table {
     /**
      * MenuLogs constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -39,8 +40,9 @@ class MenuLogs extends \WP_List_Table {
     /**
      * Admin enqueue scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -52,8 +54,9 @@ class MenuLogs extends \WP_List_Table {
     /**
      * Html page
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function page() {
 
@@ -66,8 +69,9 @@ class MenuLogs extends \WP_List_Table {
      * Get Columns
      *
      * @return array
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function get_columns() {
 
@@ -91,8 +95,9 @@ class MenuLogs extends \WP_List_Table {
      * Gets Sortable Columns
      *
      * @return array[]
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function get_sortable_columns() {
 
@@ -115,8 +120,9 @@ class MenuLogs extends \WP_List_Table {
      * @param $item
      * @param $column_name
      * @return bool|string|void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function column_default( $item, $column_name ) {
 
@@ -152,8 +158,9 @@ class MenuLogs extends \WP_List_Table {
      *
      * @param $item
      * @return string|void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function column_cb( $item ) {
 
@@ -171,8 +178,9 @@ class MenuLogs extends \WP_List_Table {
      *
      * @param $item
      * @return string
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function column_title( $item ) {
 
@@ -206,8 +214,9 @@ class MenuLogs extends \WP_List_Table {
      * Bulk Delete
      *
      * @return array
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function get_bulk_actions() {
 
@@ -224,8 +233,9 @@ class MenuLogs extends \WP_List_Table {
      * Processes Bulk Delete
      *
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function process_bulk_action() {
 
@@ -296,8 +306,9 @@ class MenuLogs extends \WP_List_Table {
      * @param $a
      * @param $b
      * @return int
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     protected function usort_reorder( $a, $b ) {
 

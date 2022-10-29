@@ -17,8 +17,9 @@ class Logger {
      * @param $session_transcript
      * @param $transaction_type
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function success_log( $site, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
@@ -39,8 +40,9 @@ class Logger {
      * @param $time
      * @param $session_transcript
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function failed_log( $site, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
@@ -62,8 +64,9 @@ class Logger {
      * @param $session_transcript
      * @param $transaction_type
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function log( $site, $action, $trigger, $response_code, $response_body, $status, $time, $session_transcript, $transaction_type ) {
 
@@ -75,8 +78,9 @@ class Logger {
      * Get All Logs
      *
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function get_all() {
 
@@ -91,8 +95,9 @@ class Logger {
      * @param $column
      * @param $value
      * @return void
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function delete_log_by( $column, $value ) {
 

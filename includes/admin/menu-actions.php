@@ -7,8 +7,9 @@ class MenuAction {
     /**
      * MenuAction constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -24,8 +25,9 @@ class MenuAction {
     /**
      * Admin enqueue scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -43,8 +45,9 @@ class MenuAction {
     /**
      * Registers Custom Post Type | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function register_action_post() {
 
@@ -77,8 +80,9 @@ class MenuAction {
     /**
      * Adds Metabox | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function register_actions_metabox() {
 
@@ -94,8 +98,9 @@ class MenuAction {
     /**
      * Renders Action configuration HTML
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function action_configuration() {
 
@@ -106,8 +111,9 @@ class MenuAction {
     /**
      * Generates API Key | AJAX 
      * 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function generate_api_key() {
 
@@ -147,8 +153,9 @@ class MenuAction {
     /**
      * Save the Actions | Action Callback
      * 
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function save_action( $post_id ) {
 

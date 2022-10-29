@@ -15,8 +15,9 @@ abstract class Trigger {
      *
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $id = false;
 
@@ -26,8 +27,9 @@ abstract class Trigger {
      *
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $title = false;
 
@@ -36,8 +38,9 @@ abstract class Trigger {
      * Logo url of the Integration
      * 
      * @var string
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $logo = false;
 
@@ -45,8 +48,9 @@ abstract class Trigger {
      * Description of the Integration
      *
      * @var string
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $description = false;
 
@@ -55,8 +59,9 @@ abstract class Trigger {
      * Unique ID of Action to be called.
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $action_id = false;
 
@@ -65,8 +70,9 @@ abstract class Trigger {
      * Arguments of Triggers and Action, to be posted
      *
      * @var bool
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public $trigger_action_args = false;
 

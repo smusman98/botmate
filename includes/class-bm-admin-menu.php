@@ -7,8 +7,8 @@ namespace BotMate;
  *
  *
  * @package BotMate
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
+ * @version 1.0.0
  */
 class AdminPage {
 
@@ -16,8 +16,9 @@ class AdminPage {
     /**
      * AdminPage constructor.
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function __construct() {
 
@@ -29,8 +30,9 @@ class AdminPage {
     /**
      * Hooks & Filters
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     private function hooks() {
 
@@ -47,8 +49,9 @@ class AdminPage {
     /**
      * Admin enqueue scripts | Action call-back
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function admin_enqueue_scripts() {
 
@@ -60,8 +63,9 @@ class AdminPage {
     /**
      * Registers menu
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function add_menu_page() {
 
@@ -122,7 +126,7 @@ class AdminPage {
          *
          * @param object $this class.
          *
-         * @since 1.0
+         * @since 1.0.0
          */
         do_action( 'botmate_add_menu', $this );
 
@@ -132,8 +136,9 @@ class AdminPage {
     /**
      * call-back | Botmate
      *
-     * @since 1.0
-     * @version 1.0
+     * @author Syed Muhammad Usman (@smusman98)
+	 * @since 1.0.0
+	 * @version 1.0.0
      */
     public function botmate() {
 
